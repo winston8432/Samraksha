@@ -226,5 +226,25 @@
 
     <script src="script.js"></script>
     <script src="server.js"></script>
+    <script src="//code.tidio.co/aamt7lfudjpqzdprfuxykvwgieuibacm.js" async></script>
+    if (annyang) {
+  // Define commands
+  var commands = {
+    'hello': function() {
+      alert('Hello! How can I help you?');
+    },
+    'show time': function() {
+      alert('The current time is ' + new Date().toLocaleTimeString());
+    }
+  };
+
+  // Add commands to annyang
+  annyang.addCommands(commands);
+
+  // Start listening
+  annyang.start();
+}
+
   </body>
 </html>
+
