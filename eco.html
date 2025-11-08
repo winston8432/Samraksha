@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, indexifembedded, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <link
+      rel="stylesheet"
+      id="css-light"
+      href="../../lib/vis/d3-maps-choropleth.datawrapper.2075c4c5.css"
+    />
+    <link
+      rel="stylesheet"
+      id="css-dark"
+      media="--disabled--"
+      href="../../lib/vis/d3-maps-choropleth.datawrapper-dark.2075c4c5.css"
+    />
+    <style id="svelte-labfc">
+      body,
+      .web-component-body {
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: 100%;
+      }
+      body.in-editor,
+      .web-component-body.in-editor {
+        padding-bottom: 10px;
+      }
+      .dw-chart.vis-height-fit {
+        overflow: hidden;
+      }
+      .chart.dir-rtl .dw-chart-body.svelte-labfc {
+        direction: rtl;
+      }
+      .chart.is-dark-mode .hide-in-dark {
+        display: none;
+      }
+      .chart:not(.is-dark-mode) .hide-in-light {
+        display: none;
+      }
+      .chart .sr-only {
+        position: absolute;
+        left: -9999px;
+        height: 1px;
+      }
+      .chart.js.svelte-labfc .noscript {
+        display: none;
+      }
+      .chart .hidden,
+      .chart .hide {
+        display: none;
+      }
+      a img {
+        border: 0px;
+      }
+      b,
+      strong {
+        font-weight: bold;
+      }
+      svg rect {
+        shape-rendering: crispEdges;
+      }
+      .error {
+        background-color: #fbeff2;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+        margin: 2em;
+      }
+      .error p {
+        color: #b63057;
+        font-size: 14px;
+        padding: 1.25em 1.5em;
+        line-height: 1.5;
+        border-color: #cf4870;
+        border-style: solid;
+        border-width: 0 0 0 4px;
+        border-radius: 4px;
+      }
+      .dw-chart-body-content.svelte-labfc {
+        position: relative;
+        z-index: 0;
+      }
+    </style>
+    <style id="svelte-1n0rdos">
+      .is-static.svelte-1n0rdos a {
+        color: unset;
+        pointer-events: none;
+        text-decoration: inherit;
+      }
+      .dir-rtl .outer-container.svelte-1n0rdos {
+        direction: rtl;
+      }
+      .outer-container.svelte-1n0rdos {
+        position: relative;
+      }
+      .container-afterChart.svelte-1n0rdos {
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
+    <style id="svelte-labfc">
+      body,
+      .web-component-body {
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: 100%;
+      }
+      body.in-editor,
+      .web-component-body.in-editor {
+        padding-bottom: 10px;
+      }
+      .dw-chart.vis-height-fit {
+        overflow: hidden;
+      }
+      .chart.dir-rtl .dw-chart-body.svelte-labfc {
+        direction: rtl;
+      }
+      .chart.is-dark-mode .hide-in-dark {
+        display: none;
+      }
+      .chart:not(.is-dark-mode) .hide-in-light {
+        display: none;
+      }
+      .chart .sr-only {
+        position: absolute;
+        left: -9999px;
+        height: 1px;
+      }
+      .chart.js.svelte-labfc .noscript {
+        display: none;
+      }
+      .chart .hidden,
+      .chart .hide {
+        display: none;
+      }
+      a img {
+        border: 0px;
+      }
+      b,
+      strong {
+        font-weight: bold;
+      }
+      svg rect {
+        shape-rendering: crispEdges;
+      }
+      .error {
+        background-color: #fbeff2;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+        margin: 2em;
+      }
+      .error p {
+        color: #b63057;
+        font-size: 14px;
+        padding: 1.25em 1.5em;
+        line-height: 1.5;
+        border-color: #cf4870;
+        border-style: solid;
+        border-width: 0 0 0 4px;
+        border-radius: 4px;
+      }
+      .dw-chart-body-content.svelte-labfc {
+        position: relative;
+        z-index: 0;
+      }
+    </style>
+    <style id="svelte-1n0rdos">
+      .is-static.svelte-1n0rdos a {
+        color: unset;
+        pointer-events: none;
+        text-decoration: inherit;
+      }
+      .dir-rtl .outer-container.svelte-1n0rdos {
+        direction: rtl;
+      }
+      .outer-container.svelte-1n0rdos {
+        position: relative;
+      }
+      .container-afterChart.svelte-1n0rdos {
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
+    <style id="svelte-labfc">
+      body,
+      .web-component-body {
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: 100%;
+      }
+      body.in-editor,
+      .web-component-body.in-editor {
+        padding-bottom: 10px;
+      }
+      .dw-chart.vis-height-fit {
+        overflow: hidden;
+      }
+      .chart.dir-rtl .dw-chart-body.svelte-labfc {
+        direction: rtl;
+      }
+      .chart.is-dark-mode .hide-in-dark {
+        display: none;
+      }
+      .chart:not(.is-dark-mode) .hide-in-light {
+        display: none;
+      }
+      .chart .sr-only {
+        position: absolute;
+        left: -9999px;
+        height: 1px;
+      }
+      .chart.js.svelte-labfc .noscript {
+        display: none;
+      }
+      .chart .hidden,
+      .chart .hide {
+        display: none;
+      }
+      a img {
+        border: 0px;
+      }
+      b,
+      strong {
+        font-weight: bold;
+      }
+      svg rect {
+        shape-rendering: crispEdges;
+      }
+      .error {
+        background-color: #fbeff2;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+        margin: 2em;
+      }
+      .error p {
+        color: #b63057;
+        font-size: 14px;
+        padding: 1.25em 1.5em;
+        line-height: 1.5;
+        border-color: #cf4870;
+        border-style: solid;
+        border-width: 0 0 0 4px;
+        border-radius: 4px;
+      }
+      .dw-chart-body-content.svelte-labfc {
+        position: relative;
+        z-index: 0;
+      }
+    </style>
+    <style id="svelte-1n0rdos">
+      .is-static.svelte-1n0rdos a {
+        color: unset;
+        pointer-events: none;
+        text-decoration: inherit;
+      }
+      .dir-rtl .outer-container.svelte-1n0rdos {
+        direction: rtl;
+      }
+      .outer-container.svelte-1n0rdos {
+        position: relative;
+      }
+      .container-afterChart.svelte-1n0rdos {
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Map Of Uttarakhand" />
+    <meta property="og:url" content="https://datawrapper.dwcdn.net/puVrj/1/" />
+    <meta property="og:description" content="" />
+    <meta name="twitter:title" content="Map Of Uttarakhand" />
+    <meta name="twitter:description" content="" />
+    <meta
+      property="og:image"
+      content="https://datawrapper.dwcdn.net/puVrj/plain-s.png?v=1"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://datawrapper.dwcdn.net/puVrj/plain-s.png?v=1"
+    />
+    <link
+      rel="alternate"
+      type="application/json+oembed"
+      href="https://api.datawrapper.de/v3/oembed?url=https://datawrapper.dwcdn.net/puVrj/1/&amp;format=json"
+      title="oEmbed"
+    />
+    <script>
+      var st = document.createElement("style");
+      st.innerHTML = "* { opacity: 0 }";
+      st.setAttribute("id", "hide-all");
+      document.head.appendChild(st);
+    </script>
+    <style type="text/css" id="operaUserStyle">
+      video {
+        filter: -opera-shader(
+          url(data:text/plain;base64,Ly8gaHR0cHM6Ly9naXRodWIuY29tL0dQVU9wZW4tRWZmZWN0cy9GaWRlbGl0eUZYLUNBUwovLyB2MwoKdW5pZm9ybSBzaGFkZXIgaUNodW5rOwp1bmlmb3JtIGZsb2F0MiBpQ2h1bmtTaXplOwp1bmlmb3JtIGZsb2F0MiBpTW91c2U7CnVuaWZvcm0gZmxvYXQgaUFyZ3NbMV07Cgpjb25zdCBmbG9hdCBFUFNJT04gPSAwLjE7CmNvbnN0IGZsb2F0IFZfTUlOID0gMDsKY29uc3QgZmxvYXQgVl9MT1cgPSAwLjI1Owpjb25zdCBmbG9hdCBWX01FRCA9IDAuNTsKY29uc3QgZmxvYXQgVl9ISUdIID0gMC43NTsKY29uc3QgZmxvYXQgVl9NQVggPSAxOwoKY29uc3QgZmxvYXQgVEhSRVNIT0xEX0FSRUEgPSA4MDAgKiA2MDA7CmNvbnN0IGZsb2F0IE1JTl9BUkVBID0gNDAwICogMTAwOwpjb25zdCBmbG9hdCBNSU5fU1RSSVAgPSAyMDsKY29uc3QgZmxvYXQgTUFSR0lOID0gMTsKCmZsb2F0MyBwaXhlbChpbnQgeCwgaW50IHksIGZsb2F0MiB4eSkgewogICAgcmV0dXJuIGlDaHVuay5ldmFsKHh5ICsgZmxvYXQyKHgsIHkpKS5yZ2I7Cn0KCmZsb2F0MyBzaGFycGVuKGZsb2F0MiB4eSkgewogICAgZmxvYXQzIGYgPQogICAgICAgIHBpeGVsKC0xLCAtMSwgeHkpICogIDEgKwogICAgICAgIHBpeGVsKCAwLCAtMSwgeHkpICogLTEgKwogICAgICAgIHBpeGVsKCAxLCAtMSwgeHkpICogIDEgKwoKICAgICAgICBwaXhlbCgtMSwgMCwgeHkpICogLTEgICsKICAgICAgICBwaXhlbCggMCwgMCwgeHkpICogLTEgICsKICAgICAgICBwaXhlbCggMSwgMCwgeHkpICogLTEgICsKCiAgICAgICAgcGl4ZWwoLTEsIDEsIHh5KSAqIDEgICArCiAgICAgICAgcGl4ZWwoIDAsIDEsIHh5KSAqIC0xICArCiAgICAgICAgcGl4ZWwoIDEsIDEsIHh5KSAqIDE7CiAgICByZXR1cm4gZiAvIC0xOwp9CgpmbG9hdDQgUkdYMihmbG9hdDIgeHkpIHsKICAgIGZsb2F0NCBjb2xvciA9IGlDaHVuay5ldmFsKHh5KTsKCiAgICBpZiAoaUNodW5rU2l6ZS54ICogaUNodW5rU2l6ZS55IDwgTUlOX0FSRUEpIHsKICAgICAgICByZXR1cm4gY29sb3I7CiAgICB9CgogICAgaWYgKGlDaHVua1NpemUueSA8IE1JTl9TVFJJUCB8fCBpQ2h1bmtTaXplLnggPCBNSU5fU1RSSVApIHsKICAgICAgICByZXR1cm4gY29sb3I7CiAgICB9CgogICAgaWYgKHh5LnggPCBNQVJHSU4gfHwgeHkueCA+IChpQ2h1bmtTaXplLnggLSBNQVJHSU4pIHx8CiAgICAgICAgeHkueSA8IE1BUkdJTiB8fCB4eS55ID4gKGlDaHVua1NpemUueSAtIE1BUkdJTikpIHsKICAgICAgICByZXR1cm4gY29sb3I7CiAgICB9CgogICAgcmV0dXJuIGZsb2F0NChzaGFycGVuKHh5KSwgMSk7Cn0KCmZsb2F0IG1pbjMoZmxvYXQgeCwgZmxvYXQgeSwgZmxvYXQgeikgewogICAgcmV0dXJuIG1pbih4LCBtaW4oeSwgeikpOwp9CgpmbG9hdCBtYXgzKGZsb2F0IHgsIGZsb2F0IHksIGZsb2F0IHopIHsKICAgIHJldHVybiBtYXgoeCwgbWF4KHksIHopKTsKfQoKZmxvYXQgcmNwKGZsb2F0IHYpIHsKICAgIHJldHVybiAxIC8gdjsKfQoKZmxvYXQzIFJHWDMoZmxvYXQyIHh5LCBmbG9hdCBzdHJlbmd0aCkgewogICAgZmxvYXQzIGEgPSBwaXhlbCgtMSwgLTEsIHh5KTsKICAgIGZsb2F0MyBiID0gcGl4ZWwoIDAsIC0xLCB4eSk7CiAgICBmbG9hdDMgYyA9IHBpeGVsKCAxLCAtMSwgeHkpOwoKICAgIGZsb2F0MyBkID0gcGl4ZWwoLTEsIDAsIHh5KTsKICAgIGZsb2F0MyBlID0gcGl4ZWwoIDAsIDAsIHh5KTsKICAgIGZsb2F0MyBmID0gcGl4ZWwoIDEsIDAsIHh5KTsKCiAgICBmbG9hdDMgZyA9IHBpeGVsKC0xLCAxLCB4eSk7CiAgICBmbG9hdDMgaCA9IHBpeGVsKCAwLCAxLCB4eSk7CiAgICBmbG9hdDMgaSA9IHBpeGVsKCAxLCAxLCB4eSk7CgogICAgZmxvYXQgbW5SID0gbWluMyhtaW4zKGQuciwgZS5yLCBmLnIpLCBiLnIsIGgucik7CiAgICBmbG9hdCBtbkcgPSBtaW4zKG1pbjMoZC5nLCBlLmcsIGYuZyksIGIuZywgaC5nKTsKICAgIGZsb2F0IG1uQiA9IG1pbjMobWluMyhkLmIsIGUuYiwgZi5iKSwgYi5iLCBoLmIpOwoKICAgIGZsb2F0IG1uUjIgPSBtaW4zKG1pbjMobW5SLCBhLnIsIGMuciksIGcuciwgaS5yKTsKICAgIGZsb2F0IG1uRzIgPSBtaW4zKG1pbjMobW5HLCBhLmcsIGMuZyksIGcuZywgaS5nKTsKICAgIGZsb2F0IG1uQjIgPSBtaW4zKG1pbjMobW5CLCBhLmIsIGMuYiksIGcuYiwgaS5iKTsKCiAgICBtblIgPSBtblIgKyBtblIyOwogICAgbW5HID0gbW5HICsgbW5HMjsKICAgIG1uQiA9IG1uQiArIG1uQjI7CgogICAgZmxvYXQgbXhSID0gbWF4MyhtYXgzKGQuciwgZS5yLCBmLnIpLCBiLnIsIGgucik7CiAgICBmbG9hdCBteEcgPSBtYXgzKG1heDMoZC5nLCBlLmcsIGYuZyksIGIuZywgaC5nKTsKICAgIGZsb2F0IG14QiA9IG1heDMobWF4MyhkLmIsIGUuYiwgZi5iKSwgYi5iLCBoLmIpOwoKICAgIGZsb2F0IG14UjIgPSBtYXgzKG1heDMobXhSLCBhLnIsIGMuciksIGcuciwgaS5yKTsKICAgIGZsb2F0IG14RzIgPSBtYXgzKG1heDMobXhHLCBhLmcsIGMuZyksIGcuZywgaS5nKTsKICAgIGZsb2F0IG14QjIgPSBtYXgzKG1heDMobXhCLCBhLmIsIGMuYiksIGcuYiwgaS5iKTsKCiAgICBteFIgPSBteFIgKyBteFIyOwogICAgbXhHID0gbXhHICsgbXhHMjsKICAgIG14QiA9IG14QiArIG14QjI7CgogICAgZmxvYXQgcmNwTVIgPSByY3AobXhSKTsKICAgIGZsb2F0IHJjcE1HID0gcmNwKG14Ryk7CiAgICBmbG9hdCByY3BNQiA9IHJjcChteEIpOwoKICAgIGZsb2F0IGFtcFIgPSBzYXR1cmF0ZShtaW4obW5SLCAyIC0gbXhSKSAqIHJjcE1SKTsKICAgIGZsb2F0IGFtcEcgPSBzYXR1cmF0ZShtaW4obW5HLCAyIC0gbXhHKSAqIHJjcE1HKTsKICAgIGZsb2F0IGFtcEIgPSBzYXR1cmF0ZShtaW4obW5CLCAyIC0gbXhCKSAqIHJjcE1CKTsKCiAgICBhbXBSID0gc3FydChhbXBSKTsKICAgIGFtcEcgPSBzcXJ0KGFtcEcpOwogICAgYW1wQiA9IHNxcnQoYW1wQik7CgogICAgZmxvYXQgcGVhayA9IC1yY3AobWl4KDgsIDUsIHN0cmVuZ3RoKSk7CgogICAgZmxvYXQgd1IgPSBhbXBSICogcGVhazsKICAgIGZsb2F0IHdHID0gYW1wRyAqIHBlYWs7CiAgICBmbG9hdCB3QiA9IGFtcEIgKiBwZWFrOwoKICAgIGZsb2F0IHJjcFdlaWdodFIgPSByY3AoMSArIDQgKiB3Uik7CiAgICBmbG9hdCByY3BXZWlnaHRHID0gcmNwKDEgKyA0ICogd0cpOwogICAgZmxvYXQgcmNwV2VpZ2h0QiA9IHJjcCgxICsgNCAqIHdCKTsKCiAgICByZXR1cm4gZmxvYXQzKAogICAgICAgIHNhdHVyYXRlKChiLnIgKiB3UiArIGQuciAqIHdSICsgZi5yICogd1IgKyBoLnIgKiB3UiArIGUucikgKiByY3BXZWlnaHRSKSwKICAgICAgICBzYXR1cmF0ZSgoYi5nICogd0cgKyBkLmcgKiB3RyArIGYuZyAqIHdHICsgaC5nICogd0cgKyBlLmcpICogcmNwV2VpZ2h0RyksCiAgICAgICAgc2F0dXJhdGUoKGIuYiAqIHdCICsgZC5iICogd0IgKyBmLmIgKiB3QiArIGguYiAqIHdCICsgZS5iKSAqIHJjcFdlaWdodEIpKTsKfQoKCmZsb2F0NCBtYWluKGZsb2F0MiB4eSkgewoKICAgIGZsb2F0NCBvcmlnaW5hbENvbG9yID0gaUNodW5rLmV2YWwoeHkpOwogICAgaWYgKG9yaWdpbmFsQ29sb3IuYSA8IDEpIHsKICAgICAgICByZXR1cm4gaUNodW5rLmV2YWwoeHkpOwogICAgfQoKICAgIGZsb2F0IGludGVuc2l0eSA9IGlBcmdzWzBdOwogICAgZmxvYXQgc3RyZW5ndGggPSAwOwogICAgZmxvYXQzIGNvbG9yOwoKICAgIGlmIChpbnRlbnNpdHkgPCBWX01JTiArIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMC4xMDsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfTE9XIC0gRVBTSU9OICYmIGludGVuc2l0eSA8IFZfTE9XICsgRVBTSU9OKSB7CiAgICAgICAgc3RyZW5ndGggPSAwLjMzOwogICAgICAgIGNvbG9yID0gUkdYMyh4eSwgc3RyZW5ndGgpOwoKICAgIH0gZWxzZSBpZiAoaW50ZW5zaXR5ID4gVl9NRUQgLSBFUFNJT04gJiYgaW50ZW5zaXR5IDwgVl9NRUQgKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuNTsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfSElHSCAtIEVQU0lPTiAmJiBpbnRlbnNpdHkgPCBWX0hJR0ggKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuOTk7CiAgICAgICAgY29sb3IgPSBSR1gzKHh5LCBzdHJlbmd0aCk7CgogICAgfSBlbHNlIGlmIChpbnRlbnNpdHkgPiBWX01BWCAtIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMTsKICAgICAgICBjb2xvciA9IFJHWDIoeHkpLnJnYjsKICAgIH0KCiAgICByZXR1cm4gZmxvYXQ0KGNvbG9yLCBvcmlnaW5hbENvbG9yLmEpOwp9) -opera-args(
+              0.5 calc(env(-opera-accent-color-r, 255) / 255)
+                calc(env(-opera-accent-color-g, 255) / 255)
+                calc(env(-opera-accent-color-b, 255) / 255)
+            )
+        );
+      }
+
+      img {
+        filter: -opera-shader(
+          url(data:text/plain;base64,Ly8gaHR0cHM6Ly9naXRodWIuY29tL0dQVU9wZW4tRWZmZWN0cy9GaWRlbGl0eUZYLUNBUwovLyB2MwoKdW5pZm9ybSBzaGFkZXIgaUNodW5rOwp1bmlmb3JtIGZsb2F0MiBpQ2h1bmtTaXplOwp1bmlmb3JtIGZsb2F0MiBpTW91c2U7CnVuaWZvcm0gZmxvYXQgaUFyZ3NbMV07Cgpjb25zdCBmbG9hdCBFUFNJT04gPSAwLjE7CmNvbnN0IGZsb2F0IFZfTUlOID0gMDsKY29uc3QgZmxvYXQgVl9MT1cgPSAwLjI1Owpjb25zdCBmbG9hdCBWX01FRCA9IDAuNTsKY29uc3QgZmxvYXQgVl9ISUdIID0gMC43NTsKY29uc3QgZmxvYXQgVl9NQVggPSAxOwoKY29uc3QgZmxvYXQgVEhSRVNIT0xEX0FSRUEgPSA4MDAgKiA2MDA7CmNvbnN0IGZsb2F0IE1JTl9BUkVBID0gNDAwICogMTAwOwpjb25zdCBmbG9hdCBNSU5fU1RSSVAgPSAyMDsKY29uc3QgZmxvYXQgTUFSR0lOID0gMTsKCmZsb2F0MyBwaXhlbChpbnQgeCwgaW50IHksIGZsb2F0MiB4eSkgewogICAgcmV0dXJuIGlDaHVuay5ldmFsKHh5ICsgZmxvYXQyKHgsIHkpKS5yZ2I7Cn0KCmZsb2F0MyBzaGFycGVuKGZsb2F0MiB4eSkgewogICAgZmxvYXQzIGYgPQogICAgICAgIHBpeGVsKC0xLCAtMSwgeHkpICogIDEgKwogICAgICAgIHBpeGVsKCAwLCAtMSwgeHkpICogLTEgKwogICAgICAgIHBpeGVsKCAxLCAtMSwgeHkpICogIDEgKwoKICAgICAgICBwaXhlbCgtMSwgMCwgeHkpICogLTEgICsKICAgICAgICBwaXhlbCggMCwgMCwgeHkpICogLTEgICsKICAgICAgICBwaXhlbCggMSwgMCwgeHkpICogLTEgICsKCiAgICAgICAgcGl4ZWwoLTEsIDEsIHh5KSAqIDEgICArCiAgICAgICAgcGl4ZWwoIDAsIDEsIHh5KSAqIC0xICArCiAgICAgICAgcGl4ZWwoIDEsIDEsIHh5KSAqIDE7CiAgICByZXR1cm4gZiAvIC0xOwp9CgpmbG9hdDQgUkdYMihmbG9hdDIgeHkpIHsKICAgIGZsb2F0NCBjb2xvciA9IGlDaHVuay5ldmFsKHh5KTsKCiAgICBpZiAoaUNodW5rU2l6ZS54ICogaUNodW5rU2l6ZS55IDwgTUlOX0FSRUEpIHsKICAgICAgICByZXR1cm4gY29sb3I7CiAgICB9CgogICAgaWYgKGlDaHVua1NpemUueSA8IE1JTl9TVFJJUCB8fCBpQ2h1bmtTaXplLnggPCBNSU5fU1RSSVApIHsKICAgICAgICByZXR1cm4gY29sb3I7CiAgICB9CgogICAgaWYgKHh5LnggPCBNQVJHSU4gfHwgeHkueCA+IChpQ2h1bmtTaXplLnggLSBNQVJHSU4pIHx8CiAgICAgICAgeHkueSA8IE1BUkdJTiB8fCB4eS55ID4gKGlDaHVua1NpemUueSAtIE1BUkdJTikpIHsKICAgICAgICByZXR1cm4gY29sb3I7CiAgICB9CgogICAgcmV0dXJuIGZsb2F0NChzaGFycGVuKHh5KSwgMSk7Cn0KCmZsb2F0IG1pbjMoZmxvYXQgeCwgZmxvYXQgeSwgZmxvYXQgeikgewogICAgcmV0dXJuIG1pbih4LCBtaW4oeSwgeikpOwp9CgpmbG9hdCBtYXgzKGZsb2F0IHgsIGZsb2F0IHksIGZsb2F0IHopIHsKICAgIHJldHVybiBtYXgoeCwgbWF4KHksIHopKTsKfQoKZmxvYXQgcmNwKGZsb2F0IHYpIHsKICAgIHJldHVybiAxIC8gdjsKfQoKZmxvYXQzIFJHWDMoZmxvYXQyIHh5LCBmbG9hdCBzdHJlbmd0aCkgewogICAgZmxvYXQzIGEgPSBwaXhlbCgtMSwgLTEsIHh5KTsKICAgIGZsb2F0MyBiID0gcGl4ZWwoIDAsIC0xLCB4eSk7CiAgICBmbG9hdDMgYyA9IHBpeGVsKCAxLCAtMSwgeHkpOwoKICAgIGZsb2F0MyBkID0gcGl4ZWwoLTEsIDAsIHh5KTsKICAgIGZsb2F0MyBlID0gcGl4ZWwoIDAsIDAsIHh5KTsKICAgIGZsb2F0MyBmID0gcGl4ZWwoIDEsIDAsIHh5KTsKCiAgICBmbG9hdDMgZyA9IHBpeGVsKC0xLCAxLCB4eSk7CiAgICBmbG9hdDMgaCA9IHBpeGVsKCAwLCAxLCB4eSk7CiAgICBmbG9hdDMgaSA9IHBpeGVsKCAxLCAxLCB4eSk7CgogICAgZmxvYXQgbW5SID0gbWluMyhtaW4zKGQuciwgZS5yLCBmLnIpLCBiLnIsIGgucik7CiAgICBmbG9hdCBtbkcgPSBtaW4zKG1pbjMoZC5nLCBlLmcsIGYuZyksIGIuZywgaC5nKTsKICAgIGZsb2F0IG1uQiA9IG1pbjMobWluMyhkLmIsIGUuYiwgZi5iKSwgYi5iLCBoLmIpOwoKICAgIGZsb2F0IG1uUjIgPSBtaW4zKG1pbjMobW5SLCBhLnIsIGMuciksIGcuciwgaS5yKTsKICAgIGZsb2F0IG1uRzIgPSBtaW4zKG1pbjMobW5HLCBhLmcsIGMuZyksIGcuZywgaS5nKTsKICAgIGZsb2F0IG1uQjIgPSBtaW4zKG1pbjMobW5CLCBhLmIsIGMuYiksIGcuYiwgaS5iKTsKCiAgICBtblIgPSBtblIgKyBtblIyOwogICAgbW5HID0gbW5HICsgbW5HMjsKICAgIG1uQiA9IG1uQiArIG1uQjI7CgogICAgZmxvYXQgbXhSID0gbWF4MyhtYXgzKGQuciwgZS5yLCBmLnIpLCBiLnIsIGgucik7CiAgICBmbG9hdCBteEcgPSBtYXgzKG1heDMoZC5nLCBlLmcsIGYuZyksIGIuZywgaC5nKTsKICAgIGZsb2F0IG14QiA9IG1heDMobWF4MyhkLmIsIGUuYiwgZi5iKSwgYi5iLCBoLmIpOwoKICAgIGZsb2F0IG14UjIgPSBtYXgzKG1heDMobXhSLCBhLnIsIGMuciksIGcuciwgaS5yKTsKICAgIGZsb2F0IG14RzIgPSBtYXgzKG1heDMobXhHLCBhLmcsIGMuZyksIGcuZywgaS5nKTsKICAgIGZsb2F0IG14QjIgPSBtYXgzKG1heDMobXhCLCBhLmIsIGMuYiksIGcuYiwgaS5iKTsKCiAgICBteFIgPSBteFIgKyBteFIyOwogICAgbXhHID0gbXhHICsgbXhHMjsKICAgIG14QiA9IG14QiArIG14QjI7CgogICAgZmxvYXQgcmNwTVIgPSByY3AobXhSKTsKICAgIGZsb2F0IHJjcE1HID0gcmNwKG14Ryk7CiAgICBmbG9hdCByY3BNQiA9IHJjcChteEIpOwoKICAgIGZsb2F0IGFtcFIgPSBzYXR1cmF0ZShtaW4obW5SLCAyIC0gbXhSKSAqIHJjcE1SKTsKICAgIGZsb2F0IGFtcEcgPSBzYXR1cmF0ZShtaW4obW5HLCAyIC0gbXhHKSAqIHJjcE1HKTsKICAgIGZsb2F0IGFtcEIgPSBzYXR1cmF0ZShtaW4obW5CLCAyIC0gbXhCKSAqIHJjcE1CKTsKCiAgICBhbXBSID0gc3FydChhbXBSKTsKICAgIGFtcEcgPSBzcXJ0KGFtcEcpOwogICAgYW1wQiA9IHNxcnQoYW1wQik7CgogICAgZmxvYXQgcGVhayA9IC1yY3AobWl4KDgsIDUsIHN0cmVuZ3RoKSk7CgogICAgZmxvYXQgd1IgPSBhbXBSICogcGVhazsKICAgIGZsb2F0IHdHID0gYW1wRyAqIHBlYWs7CiAgICBmbG9hdCB3QiA9IGFtcEIgKiBwZWFrOwoKICAgIGZsb2F0IHJjcFdlaWdodFIgPSByY3AoMSArIDQgKiB3Uik7CiAgICBmbG9hdCByY3BXZWlnaHRHID0gcmNwKDEgKyA0ICogd0cpOwogICAgZmxvYXQgcmNwV2VpZ2h0QiA9IHJjcCgxICsgNCAqIHdCKTsKCiAgICByZXR1cm4gZmxvYXQzKAogICAgICAgIHNhdHVyYXRlKChiLnIgKiB3UiArIGQuciAqIHdSICsgZi5yICogd1IgKyBoLnIgKiB3UiArIGUucikgKiByY3BXZWlnaHRSKSwKICAgICAgICBzYXR1cmF0ZSgoYi5nICogd0cgKyBkLmcgKiB3RyArIGYuZyAqIHdHICsgaC5nICogd0cgKyBlLmcpICogcmNwV2VpZ2h0RyksCiAgICAgICAgc2F0dXJhdGUoKGIuYiAqIHdCICsgZC5iICogd0IgKyBmLmIgKiB3QiArIGguYiAqIHdCICsgZS5iKSAqIHJjcFdlaWdodEIpKTsKfQoKCmZsb2F0NCBtYWluKGZsb2F0MiB4eSkgewoKICAgIGZsb2F0NCBvcmlnaW5hbENvbG9yID0gaUNodW5rLmV2YWwoeHkpOwogICAgaWYgKG9yaWdpbmFsQ29sb3IuYSA8IDEpIHsKICAgICAgICByZXR1cm4gaUNodW5rLmV2YWwoeHkpOwogICAgfQoKICAgIGZsb2F0IGludGVuc2l0eSA9IGlBcmdzWzBdOwogICAgZmxvYXQgc3RyZW5ndGggPSAwOwogICAgZmxvYXQzIGNvbG9yOwoKICAgIGlmIChpbnRlbnNpdHkgPCBWX01JTiArIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMC4xMDsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfTE9XIC0gRVBTSU9OICYmIGludGVuc2l0eSA8IFZfTE9XICsgRVBTSU9OKSB7CiAgICAgICAgc3RyZW5ndGggPSAwLjMzOwogICAgICAgIGNvbG9yID0gUkdYMyh4eSwgc3RyZW5ndGgpOwoKICAgIH0gZWxzZSBpZiAoaW50ZW5zaXR5ID4gVl9NRUQgLSBFUFNJT04gJiYgaW50ZW5zaXR5IDwgVl9NRUQgKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuNTsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfSElHSCAtIEVQU0lPTiAmJiBpbnRlbnNpdHkgPCBWX0hJR0ggKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuOTk7CiAgICAgICAgY29sb3IgPSBSR1gzKHh5LCBzdHJlbmd0aCk7CgogICAgfSBlbHNlIGlmIChpbnRlbnNpdHkgPiBWX01BWCAtIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMTsKICAgICAgICBjb2xvciA9IFJHWDIoeHkpLnJnYjsKICAgIH0KCiAgICByZXR1cm4gZmxvYXQ0KGNvbG9yLCBvcmlnaW5hbENvbG9yLmEpOwp9) -opera-args(
+              0.5 calc(env(-opera-accent-color-r, 255) / 255)
+                calc(env(-opera-accent-color-g, 255) / 255)
+                calc(env(-opera-accent-color-b, 255) / 255)
+            )
+        );
+      }
+    </style>
+    <meta name="description" content="" />
+    <style></style>
+    <!---->
+    <title>Map Of Uttarakhand</title>
+    <style data-emotion="datawrapper-puVrj" data-s=""></style>
+    <style id="svelte-5ykzlc">
+      .chart {
+        height: 100%;
+      }
+    </style>
+    <style type="text/css">
+      :root img[width="728"][height="90"], :root [href="https://adstub.net/cina777/"], :root [href="https://adstub.net/arab777/"], :root [href="https://adstub.net/ratu89/"], :root [href="https://adstub.net/judi89/"], :root [href^="//mage98rquewz.com/"], :root [href^="//x4pollyxxpush.com/"], :root span[id^="ezoic-pub-ad-placeholder-"], :root ins.adsbygoogle[data-ad-slot], :root ins.adsbygoogle[data-ad-client], :root img[src^="https://s-img.adskeeper.com/"], :root guj-ad, :root gpt-ad, :root div[id^="zergnet-widget"], :root div[id^="vuukle-ad-"], :root div[id^="taboola-stream-"], :root div[id^="sticky_ad_"], :root div[id^="st"][style^="z-index: 999999999;"], :root div[id^="gpt_ad_"], :root div[id^="ezoic-pub-ad-"], :root div[id^="dfp-ad-"], :root div[id^="crt-"][style], :root div[id^="apn_native_ad_slot_"], :root div[id^="adspot-"], :root div[id^="adrotate_widgets-"], :root ps-connatix-module, :root div[id^="ad_position_"], :root div[id^="ad-div-"], :root div[id*="ScriptRoot"], :root div[id*="MarketGid"], :root [href="https://adstub.net/rusia777/"], :root div[data-id-advertdfpconf], :root div[data-dfp-id], :root hl-adsense, :root div[data-contentexchange-widget], :root div[data-alias="300x250 Ad 2"], :root div[data-adzone], :root div[data-adunit-path], :root div[data-adname], :root div[data-ad-targeting], :root div[data-ad-region], :root div[data-ad-placeholder], :root div[aria-label="Ads"], :root display-ads, :root display-ad-component, :root atf-ad-slot, :root aside[id^="adrotate_widgets-"], :root amp-fx-flying-carpet, :root amp-embed[type="taboola"], :root amp-connatix-player, :root amp-ad-custom, :root amp-ad, :root div[id^="google_dfp_"], :root ad-slot, :root ad-shield-ads, :root a[style="width:100%;height:100%;z-index:10000000000000000;position:absolute;top:0;left:0;"], :root a[onmousedown^="this.href='https://paid.outbrain.com/network/redir?"] + .ob_source, :root a[onclick^="window.location.replace('https://random-affiliate.atimaze.com/"], :root a[href^="https://xbet-4.com/"], :root div[id^="ad-position-"], :root a[href^="https://www.toprevenuegate.com/"], :root a[href^="https://www.purevpn.com/"][href*="&utm_source=aff-"], :root a[href^="https://www.privateinternetaccess.com/"] > img, :root a[href^="https://financeads.net/tc.php?"], :root a[href^="https://www.mrskin.com/tour"], :root a[href^="https://www.infowarsstore.com/"] > img, :root a[href^="https://www.highperformancecpmgate.com/"], :root a[href^="https://www.highcpmrevenuenetwork.com/"], :root a[href^="https://www.get-express-vpn.com/offer/"], :root a[href^="https://lnkxt.bannerator.com/"], :root a[href^="https://www.geekbuying.com/dynamic-ads/"], :root a[href^="https://www.financeads.net/tc.php?"], :root a[href^="https://www.effectiveratecpm.com/"], :root [href^="https://www.herbanomic.com/"] > img, :root a[href^="https://maymooth-stopic.com/"], :root a[href^="https://www.dql2clk.com/"], :root a[href^="https://www.nutaku.net/signup/landing/"], :root a[href^="https://www.dating-finder.com/signup/?ai_d="], :root a[href^="https://explore-site.com/"], :root a[href^="https://www.brazzersnetwork.com/landing/"], :root [data-template-type="nativead"], :root a[href^="https://www.endorico.com/Smartlink/"], :root a[href^="https://www.adultempire.com/"][href*="?partner_id="], :root a[href^="https://voluum.prom-xcams.com/"], :root a[href^="https://twinrdsyte.com/"], :root a[href^="https://twinrdsrv.com/"], :root a[href^="https://trk.nfl-online-streams.club/"], :root a[href^="https://tracking.avapartner.com/"], :root a[href^="https://track.wg-aff.com"], :root a[href^="https://track.ultravpn.com/"], :root a[href^="https://track.afcpatrk.com/"], :root a[href^="https://torguard.net/aff.php"] > img, :root [data-identity="adhesive-ad"], :root a[href^="https://tc.tradetracker.net/"] > img, :root a[href^="https://tatrck.com/"], :root a[href^="https://click.candyoffers.com/"], :root [href^="https://zstacklife.com/"] img, :root a[href^="https://t.aslnk.link/"], :root a[href^="https://t.adating.link/"], :root a[href^="https://go.trackitalltheway.com/"], :root [href^="https://track.fiverr.com/visit/"] > img, :root a[href^="https://syndication.exoclick.com/"], :root a[href^="https://syndication.dynsrvtbg.com/"], :root div[data-alias="300x250 Ad 1"], :root a[href^="https://syndicate.contentsserved.com/"], :root a[href^="https://svb-analytics.trackerrr.com/"], :root a[href^="https://track.aftrk5.com/"], :root a[href^="https://slkmis.com/"], :root a[href^="https://myclick-2.com/"], :root a[href^="https://sexynearme.com/"], :root [data-ad-manager-id], :root a[href^="https://s.zlinkr.com/"], :root bottomadblock, :root a[href^="https://s.zlinkd.com/"], :root [href="https://adstub.net/gaza88/"], :root a[href^="https://ad.doubleclick.net/"], :root a[href^="https://static.fleshlight.com/images/banners/"], :root a[href^="https://s.zlink7.com/"], :root a[href^="https://s.zlink3.com/"], :root a[href^="https://www.mrskin.com/account/"], :root a[href^="https://s.optzsrv.com/"], :root a[href^="https://s.ma3ion.com/"], :root a[href^="https://s.eunow4u.com/"], :root #kt_player > div[style$="display: block;"][style*="inset: 0px;"], :root [href$="/sexdating.php"], :root a[href^="https://quotationfirearmrevision.com/"], :root a[href^="https://pubads.g.doubleclick.net/"], :root a[href^="https://prf.hn/click/"][href*="/camref:"] > img, :root a[href^="https://www.dating-finder.com/?ai_d="], :root a[href^="https://serve.awmdelivery.com/"], :root a[href^="https://prf.hn/click/"][href*="/adref:"] > img, :root app-ad, :root [href^="https://ap.octopuspop.com/click/"] > img, :root a[href^="https://postback1win.com/"], :root a[href^="https://mmwebhandler.aff-online.com/"], :root a[href^="https://www.bet365.com/"][href*="affiliate="], :root a[href^="https://pb-track.com/"], :root a[href^="https://pb-front.com/"], :root a[href^="https://paid.outbrain.com/network/redir?"], :root a[href^="https://streamate.com/landing/click/"], :root div[class^="Adstyled__AdWrapper-"], :root a[href^="https://osfultrbriolenai.info/"], :root a[href^="https://upsups.click/"], :root a[href^="https://ndt5.net/"], :root a[href^="https://natour.naughtyamerica.com/track/"], :root a[href^="https://mediaserver.entainpartners.com/renderBanner.do?"], :root a[href^="https://lead1.pl/"], :root a[href^="https://landing.brazzersnetwork.com/"], :root a[href^="https://join.virtuallust3d.com/"], :root a[href^="https://kiksajex.com/"], :root a[href^="https://juicyads.in/"], :root a[href^="https://snowdayonline.xyz/"], :root a[href^="https://mediaserver.gvcaffiliates.com/renderBanner.do?"], :root a[href^="https://join.dreamsexworld.com/"], :root a[href^="https://join.bannedsextapes.com/track/"], :root a[href^="https://jaxofuna.com/"], :root a[href^="https://italarizege.xyz/"], :root a[href^="https://iqbroker.com/"][href*="?aff="], :root a[href^="https://identicaldrench.com/"], :root a[href^="https://hot-growngames.life/"], :root a[href^="https://helmethomicidal.com/"], :root a[href^="https://golinks.work/"], :root a[href^="https://s.zlinkn.com/"], :root a[href^="https://go.xxxvjmp.com/"], :root a[href^="https://go.xxxjmp.com"], :root [class^="tile-picker__CitrusBannerContainer-sc-"], :root a[href^="https://go.xxxiijmp.com"], :root a[href^="https://go.xtbaffiliates.com/"], :root [data-role="tile-ads-module"], :root a[href^="https://go.xlviirdr.com"], :root div[class$="-adlabel"], :root a[href^="https://go.xlviiirdr.com"], :root a[href^="https://ismlks.com/"], :root [href^="https://www.mypillow.com/"] > img, :root a[href^="https://go.xlirdr.com"], :root [data-css-class="dfp-inarticle"], :root a[href^="https://l.hyenadata.com/"], :root a[href^="https://go.tmrjmp.com"], :root a[href^="https://zirdough.net/"], :root a[href^="https://s.deltraff.com/"], :root a[href^="https://go.markets.com/visit/?bta="], :root a[href^="https://billing.purevpn.com/aff.php"] > img, :root a[href^="https://go.hpyrdr.com/"], :root a[href^="https://lijavaxa.com/"], :root a[href^="https://go.goaserv.com/"], :root a[href^="https://t.hrtye.com/"], :root a[href^="https://go.etoro.com/"] > img, :root a[href^="https://go.dmzjmp.com"], :root a[href^="https://www.bang.com/?aff="], :root #mgb-container > #mgb, :root a[href^="https://go.admjmp.com"], :root a[href^="https://ak.stikroltiltoowi.net/"], :root a[href^="https://get.surfshark.net/aff_c?"][href*="&aff_id="] > img, :root a[href^="https://www.adskeeper.com"], :root a[data-redirect^="https://paid.outbrain.com/network/redir?"], :root [href^="https://clicks.affstrack.com/"] > img, :root a[href^="https://engine.phn.doublepimp.com/"], :root a[href^="https://engine.blueistheneworanges.com/"], :root a[href^="https://drumskilxoa.click/"], :root a[href^="https://dl-protect.net/"], :root a[href*=".foxqck.com/"], :root a[href^="https://ctosrd.com/"], :root a[href^="https://clixtrac.com/"], :root [href^="https://noqreport.com/"] > img, :root a[href^="https://clicks.pipaffiliates.com/"], :root app-advertisement, :root a[href^="https://getmatchedlocally.com/"], :root a[href^="https://clickins.slixa.com/"], :root a[href^="https://datewhisper.life/"], :root a[href^="https://get-link.xyz/"], :root a[href^="https://click.linksynergy.com/fs-bin/"] > img, :root a[href^="https://combodef.com/"], :root a[href^="https://click.hoolig.app/"], :root a[href^="https://www.onlineusershielder.com/"], :root a[href^="https://click.ggpickaff.com/"], :root a[href^="https://track.totalav.com/"], :root a[href^="https://ctrdwm.com/"], :root img[src^="https://images.purevpnaffiliates.com"], :root a[href^="https://porntubemate.com/"], :root a[href^="https://clickadilla.com/"], :root a[href^="https://click.dtiserv2.com/"], :root a[href^="https://www.adxsrve.com/"], :root a[href^="https://click.Ggpickaff.com/"], :root a[href^="https://go.xlvirdr.com"], :root a[href^="http://www.iyalc.com/"], :root a[href^="https://stardomcoit.com/"], :root a[href^="https://claring-loccelkin.com/"], :root a[href^="https://bongacams2.com/track?"], :root a[href^="https://t.ajrkm1.com/"], :root a[href^="https://bongacams10.com/track?"], :root a[href^="https://www.sheetmusicplus.com/"][href*="?aff_id="], :root a[href^="https://bngpt.com/"], :root a[href^="//hoodingluster.com/"], :root a[href^="https://black77854.com/"], :root a[href^="http://annulmentequitycereals.com/"], :root [data-taboola-options], :root a[href^="https://believessway.com/"], :root a[href^="https://Click.ggpickaff.com/"], :root a[href^="https://banners.livepartners.com/"], :root a[href^="http://revolvemockerycopper.com/"], :root a[href^="https://awptjmp.com/"], :root a[href^="https://join.sexworld3d.com/track/"], :root a[href^="https://aweptjmp.com/"], :root a[href^="https://ausoafab.net/"], :root a[href^="https://aj1070.online/"], :root a[href^="https://bc.game/"], :root a[href^="https://ak.oalsauwy.net/"], :root a[href^="https://a.bestcontentoperation.top/"], :root a[href^="https://adultfriendfinder.com/go/"], :root a[href^="https://ads.planetwin365affiliate.com/"], :root a[href^="https://ads.leovegas.com/"], :root .nya-slot[style], :root a[href^="https://a.bestcontentweb.top/"], :root a[href^="https://a2.adform.net/"], :root a[href^="https://a.candyai.love/"], :root a[href^="https://playnano.online/offerwalls/?ref="], :root a[href^="https://a.adtng.com/"], :root .banner-img > .pbl, :root [data-m-ad-id], :root a[href^="https://a-ads.com/"], :root [id^="ad_slider"], :root a[href^="https://click.ggpickyaff.com/"], :root broadstreet-zone-container, :root a[href^="https://ak.psaltauw.net/"], :root a[href^="https://1winpb.com/"], :root div[id^="rc-widget-"], :root a[href^="https://turnstileunavailablesite.com/"], :root a[href^="https://chaturbate.com/in/?"], :root a[href^="https://prf.hn/click/"][href*="/creativeref:"] > img, :root a[href*="&maxads="], :root a[href^="http://www.adultempire.com/unlimited/promo?"][href*="&partner_id="], :root a[href^="https://1betandgonow.com/"], :root div[id^="optidigital-adslot"], :root [href^="https://wsup.ai/"], :root a[href^="https://123-stream.org/"], :root a[href^="https://in.rabbtrk.com/"], :root a[href^="http://www.h4trck.com/"], :root a[href^="http://www.friendlyduck.com/AF_"], :root a[href^="http://partners.etoro.com/"], :root [href="https://chaturbate.jjgirls.com/"] > img, :root a[href^="http://cam4com.go2cloud.org/aff_c?"], :root a[href^="https://ads.betfair.com/redirect.aspx?"], :root a[href^="http://trk.globwo.online/"], :root a[href^="http://troopsassistedstupidity.com/"], :root a[href^="https://random-affiliate.atimaze.com/"], :root a-ad, :root a[href^="https://offhandpump.com/"], :root a[href^="http://stickingrepute.com/"], :root #slashboxes > .deals-rail, :root a[href^="http://join.brokestraightboys.com/track/"], :root a[href^="http://roadcontagion.com/"], :root a[href^="http://premonitioninventdisagree.com/"], :root [href^="http://mypillow.com/"] > img, :root a[href^="http://bongacams.com/track?"], :root a[href^="https://track.adform.net/"], :root a[href^="http://avthelkp.net/"], :root a[href^="https://a.medfoodhome.com/"], :root a[href^="https://engine.flixtrial.com/"], :root [data-type="ad-vertical"], :root a[href^="//startgaming.net/tienda/" i], :root a[href^="https://a.medfoodsafety.com/"], :root a[href^="//go.eabids.com/"], :root a[href^="//ejitsirdosha.net/"], :root a[href^=" https://www.friendlyduck.com/AF_"], :root [data-cl-spot-id], :root a[href*="/jump/next.php?r="], :root a[href^="https://go.rmishe.com/"], :root [href^="https://ilovemyfreedoms.com/landing-"], :root a[href^="https://syndication.optimizesrv.com/"], :root a[href*="//daichoho.com/"], :root a[href^="https://go.nordvpn.net/aff"] > img, :root .\[\&_\.gdprAdTransparencyCogWheelButton\]\:\!pjra-z-\[5\], :root [href^="http://clicks.totemcash.com/"], :root a[href^="https://ad.zanox.com/ppc/"] > img, :root a[href^="https://lone-pack.com/"], :root [data-d-ad-id], :root a[href*=".engine.adglare.net/"], :root a[href^="https://t.ajrkm3.com/"], :root [href^="https://aads.com/campaigns/"], :root a[href^="//stighoazon.com/"], :root div[id^="lazyad-"], :root a[href^="http://com-1.pro/"], :root [href^="https://www.profitablegatecpm.com/"], :root a[href*=".cfm?domain="][href*="&fp="], :root [data-ad-name], :root a[href^="https://loboclick.com/"], :root a[data-url^="https://vulpix.bet/?ref="], :root a[href^="https://ab.advertiserurl.com/aff/"], :root a[data-oburl^="https://paid.outbrain.com/network/redir?"], :root a[href^="https://go.xlivrdr.com"], :root [onclick^="location.href='https://1337x.vpnonly.site/"], :root [id^="section-ad-banner"], :root a[href^="https://www.goldenfrog.com/vyprvpn?offer_id="][href*="&aff_id="], :root a[href^="https://wmctjd.com/"], :root a[href*="//jjgirls.com/sex/Chaturbate"], :root [id^="ad-wrap-"], :root [href^="https://zone.gotrackier.com/"], :root a[href^="http://sarcasmadvisor.com/"], :root [href^="https://www.restoro.com/"], :root [href^="https://www.targetingpartner.com/"], :root .section-subheader > .section-hotel-prices-header, :root [href^="https://www.hostg.xyz/"] > img, :root a[href^="http://adultfriendfinder.com/go/"], :root a[href^="https://fastestvpn.com/lifetime-special-deal?a_aid="], :root a[href^="https://tour.mrskin.com/"], :root [href^="https://www.brighteonstore.com/products/"] img, :root citrus-ad-wrapper, :root a[href^="https://go.grinsbest.com/"], :root a[href^="https://vo2.qrlsx.com/"], :root [href^="https://www.avantlink.com/click.php"] img, :root [href^="https://wwp.hoqodd.com/redirect-zone/"], :root div[id^="div-ads-"], :root [href^="https://rapidgator.net/article/premium/ref/"], :root [href^="https://join.girlsoutwest.com/"], :root a[href^="https://activate-game.com/"], :root .scroll-fixable.rail-right > .deals-rail, :root [data-wpas-zoneid], :root a[href^="https://track.aftrk3.com/"], :root [href^="https://join3.bannedsextapes.com"], :root a[href^="https://bodelen.com/"], :root a[href*=".g2afse.com/"], :root div[id^="adngin-"], :root [data-rc-widget], :root span[data-ez-ph-id], :root [href^="https://track.aftrk1.com/"], :root [href^="https://join.playboyplus.com/track/"], :root a[href^="https://go.xxxijmp.com"], :root [href^="https://istlnkcl.com/"], :root a[href^="https://t.acam.link/"], :root a[href^="https://go.strpjmp.com/"], :root [href^="https://url.totaladblock.com/"], :root a[href^="https://tm-offers.gamingadult.com/"], :root [href^="https://charmingdatings.life/"], :root [href="https://adstub.net/indo666/"], :root [href^="https://glersakr.com/"], :root a[href^="https://a.bestcontentfood.top/"], :root [href^="https://cpa.10kfreesilver.com/"], :root [data-id^="div-gpt-ad"], :root a[href^="https://tracker.loropartners.com/"], :root [href^="https://awbbjmp.com/"], :root div[ow-ad-unit-wrapper], :root a[data-href^="http://ads.trafficjunky.net/"], :root [data-advadstrackid], :root a[href^="https://www.friendlyduck.com/AF_"], :root [href^="https://ad1.adfarm1.adition.com/"], :root a[href^="https://bngprm.com/"], :root [href^="https://shiftnetwork.infusionsoft.com/go/"] > img, :root a[href^="https://go.bushheel.com/"], :root a[href^="https://ctjdwm.com/"], :root a[href^="https://camfapr.com/landing/click/"], :root div[data-ad-wrapper], :root .gnt_em_vp_c[data-g-s="vp_dk"], :root [href="//sexcams.plus/"], :root [href^="http://www.mypillow.com/"] > img, :root a[href^="https://promerycergerful.com/"], :root #kt_player > a[target="_blank"], :root [href="https://ourgoldguy.com/contact/"] img, :root .ob_container .item-container-obpd, :root [id^="div-gpt-ad"], :root [href="https://jdrucker.com/gold"] > img, :root a[href^="https://join.virtualtaboo.com/track/"], :root [id^="ad_sky"], :root [name^="google_ads_iframe"], :root a[href^="https://www.liquidfire.mobi/"], :root .grid > .container > #aside-promotion, :root DFP-AD, :root [href^="https://go.xlrdr.com"], :root a[href^="https://s.cant3am.com/"], :root [data-testid^="taboola-"], :root [data-testid^="section-AdRowBillboard"], :root a[href^="https://track.1234sd123.com/"], :root zeus-ad, :root [data-testid="prism-ad-wrapper"], :root [href^="https://ad.admitad.com/"], :root [href^="https://mypillow.com/"] > img, :root [data-testid="ad_testID"], :root a[href^="https://trk.softonixs.xyz/"], :root [href^="https://www.mypatriotsupply.com/"] > img, :root [href^="https://antiagingbed.com/discount/"] > img, :root a[href*=".adsrv.eacdn.com/"], :root a[href^="https://go.cmtaffiliates.com/"], :root [href^="https://optimizedelite.com/"] > img, :root [data-testid="adBanner-wrapper"], :root [href^="https://mylead.global/stl/"] > img, :root [href^="https://mypatriotsupply.com/"] > img, :root a[href^="https://go.hpyjmp.com"], :root iframe[scrolling="no"][sandbox*="allow-popups allow-modals"][style^="width: 100%; height: 100%; border: none;"], :root [href^="https://mystore.com/"] > img, :root [href^="https://wct.link/click?"], :root div[data-adunit], :root app-large-ad, :root [href^="https://turtlebids.irauctions.com/"] img, :root a[href^="https://witnessjacket.com/"], :root [data-mobile-ad-id], :root [data-dynamic-ads], :root [class^="amp-ad-"], :root a[href^="http://handgripvegetationhols.com/"], :root a[href^="https://go.rmhfrtnd.com"], :root a[href^="https://go.bbrdbr.com"], :root a[href^="https://fc.lc/ref/"], :root [data-adshim], :root topadblock, :root a[href^="//s.zlinkd.com/"], :root #teaser1[style^="width:autopx;"], :root [href^="https://www.cloudways.com/en/?id"], :root [data-asg-ins], :root a[href^="https://gamingadlt.com/?offer="], :root a[href^="https://rixofa.com/"], :root a[href^="https://best-experience-cool.com/"], :root [data-desktop-ad-id], :root [data-adbridg-ad-class], :root #teaser3[style^="width:autopx;"], :root [data-adblockkey], :root [data-block-type="ad"], :root [data-ad-width], :root [onclick*="content.ad/"], :root AMP-AD, :root [data-ad-cls], :root [data-ez-name], :root a[href^="https://go.mnaspm.com/"], :root a[href^="https://service.bv-aff-trx.com/"], :root a[href^="https://6-partner.com/"], :root [class^="s2nPlayer"], :root [href^="https://affiliate.fastcomet.com/"] > img, :root [class^="adDisplay-module"], :root a[href^="https://adclick.g.doubleclick.net/"], :root [data-freestar-ad][id], :root AD-SLOT, :root a[href^="https://www.googleadservices.com/pagead/aclk?"] > img, :root [data-ad-module], :root a[href^="https://go.skinstrip.net"][href*="?campaignId="], :root #teaser2[style^="width:autopx;"], :root [data-revive-zoneid], :root a[href^="https://losingoldfry.com/"], :root div[id^="div-gpt-"], :root a[href^="https://gml-grp.com/"], :root .ob_dual_right > .ob_ads_header ~ .odb_div, :root a[href^="http://tc.tradetracker.net/"] > img, :root [data-testid="commercial-label-taboola"], :root [class^="div-gpt-ad"], :root a[href^="https://traffdaq.com/"], :root a[href^="https://cam4com.go2cloud.org/"], :root a[href^="http://li.blogtrottr.com/click?"], :root a[href^="https://www8.smartadserver.com/"], :root a[href^="https://pb-imc.com/"], :root a[onmousedown^="this.href='https://paid.outbrain.com/network/redir?"], :root a[href^="https://t.ajump1.com/"], :root a[href^="https://wittered-mainging.com/"], :root #teaser3[style="width: 100%;text-align: center;display: scroll;position:fixed;bottom: 0;margin: 0 auto;z-index: 103;"]
+      {
+        display: none !important;
+      }
+    </style>
+    <style id="svelte-nsyywh">
+      svg.svelte-nsyywh {
+        overflow: visible;
+        display: block;
+      }
+      svg.svelte-nsyywh g.swatch text {
+        transition: opacity 0.15s ease-in-out;
+      }
+      .highlighted.svelte-nsyywh g.swatch.highlight .buffer {
+        opacity: 0.2;
+      }
+      .highlighted.svelte-nsyywh g.swatch:not(.highlight) > * {
+        opacity: 0.2;
+      }
+      .highlighted.svelte-nsyywh g.swatch:not(.highlight) > text {
+        opacity: 0.3;
+      }
+      /* Tick line in swatch after highlighted swatch should be fully opaque */
+      .highlighted.svelte-nsyywh g.swatch.highlight + g.swatch .tick {
+        opacity: 1;
+      }
+      /* For ruler legends, text in swatch after highlighted swatch should be fully opaque */
+      .highlighted.ruler.svelte-nsyywh g.swatch.highlight + g.swatch text {
+        opacity: 1;
+      }
+    </style>
+    <style id="svelte-skwydi">
+      .dir-rtl.svelte-skwydi {
+        direction: rtl;
+      }
+      .legend-title.svelte-skwydi {
+        position: relative;
+      }
+      .legend-title.svelte-skwydi,
+      .legend-title.svelte-skwydi span:where(.svelte-skwydi) {
+        text-shadow: none;
+      }
+      .legend-title.svelte-skwydi:not(.buffer) > span:where(.svelte-skwydi) {
+        position: relative;
+        z-index: 10;
+      }
+      .legend-title.buffer.svelte-skwydi {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+      }
+    </style>
+    <style id="svelte-a5wbg4">
+      g.swatch.svelte-a5wbg4 path.tick:where(.svelte-a5wbg4) {
+        shape-rendering: crispEdges;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="dw-chart chart vis-height-fixed theme-datawrapper vis-d3-maps-choropleth"
+      id="__svelte-dw"
+    >
+      <!--[--><!---->
+      <div class="outer-container svelte-1n0rdos">
+        <!--[-->
+        <div class="container container-body datawrapper-puVrj-wkg7wo">
+          <!--[--><!--]-->
+          <!--[-->
+          <div class="container container-bodyTop datawrapper-puVrj-13fcjr6">
+            <!--[--><!--]-->
+            <!--[!--><!--]-->
+            <!--[-->
+            <div
+              class="container container-bodyCenter datawrapper-puVrj-112zasr"
+            >
+              <!--[--><!--]-->
+              <!--[--><!----><!--[-->
+              <div class="container container-header datawrapper-puVrj-rpmls8">
+                <!--[--><!--[!--><!--]--><!--[--><!----><!---->
+                <h3 class="block-headline datawrapper-puVrj-16cs784">
+                  <!--[!--><!--]--><!--[!--><!--]--><!--[!--><span
+                    ><!---->Map Of Uttarakhand<!----></span
+                  ><!--]--><!----><!--[!--><!--]--><!---->
+                </h3>
+                <!----><!----><!--]--><!----><!--]-->
+                <!---->
+              </div>
+              <!--]--><!----><!--]--><!---->
+              <!--[-->
+              <div
+                slot="visBody"
+                id="chart"
+                class="dw-chart-body vis-height-fixed datawrapper-puVrj-2irvu4 svelte-labfc"
+              >
+                <!--[!--><!--]-->
+                <div
+                  class="dw-chart-body-content svelte-labfc datawrapper-puVrj-o3rrzt"
+                  aria-hidden="false"
+                >
+                  <div class="legend-container" data-position="above">
+                    <div class="map-key export-rect map-key-mt">
+                      <!---->
+                      <div
+                        class="dir-ltr color-legend stepped ruler horizontal datawrapper-puVrj-yqaw01 datawrapper-puVrj-17yrv0 svelte-skwydi"
+                        aria-label="Color legend with 5 steps, ranging from less than 29.8 to greater than or equal to 80.2."
+                        style="width: 170px; height: auto"
+                      >
+                        <!---->
+                        <svg
+                          class="svelte-nsyywh"
+                          width="169"
+                          height="27.796875"
+                        >
+                          <g
+                            class="svelte-nsyywh ruler"
+                            style="transform: translate(0px, 0px)"
+                          >
+                            <!---->
+                            <g
+                              aria-hidden="true"
+                              class="swatch svelte-a5wbg4"
+                              transform="translate(0,0)"
+                            >
+                              <!----><!---->
+                              <rect
+                                class="legend-color"
+                                width="33"
+                                height="13"
+                                style="fill: rgb(240, 249, 232)"
+                              ></rect>
+                              <!----><!----><!---->
+                            </g>
+                            <g
+                              aria-hidden="true"
+                              class="swatch svelte-a5wbg4"
+                              transform="translate(34,0)"
+                            >
+                              <!----><!---->
+                              <rect
+                                class="legend-color"
+                                width="33"
+                                height="13"
+                                style="fill: rgb(151, 213, 192)"
+                              ></rect>
+                              <!----><!---->
+                              <text
+                                transform="translate(0,16)"
+                                style="
+                                  text-anchor: middle;
+                                  dominant-baseline: hanging;
+                                "
+                              >
+                                29.8
+                              </text>
+                              <!----><!---->
+                            </g>
+                            <g
+                              aria-hidden="true"
+                              class="swatch svelte-a5wbg4"
+                              transform="translate(68,0)"
+                            >
+                              <!----><!---->
+                              <rect
+                                class="legend-color"
+                                width="33"
+                                height="13"
+                                style="fill: rgb(75, 168, 201)"
+                              ></rect>
+                              <!----><!---->
+                              <text
+                                transform="translate(0,16)"
+                                style="
+                                  text-anchor: middle;
+                                  dominant-baseline: hanging;
+                                "
+                              >
+                                46.6
+                              </text>
+                              <!----><!---->
+                            </g>
+                            <g
+                              aria-hidden="true"
+                              class="swatch svelte-a5wbg4"
+                              transform="translate(102,0)"
+                            >
+                              <!----><!---->
+                              <rect
+                                class="legend-color"
+                                width="33"
+                                height="13"
+                                style="fill: rgb(29, 121, 181)"
+                              ></rect>
+                              <!----><!---->
+                              <text
+                                transform="translate(0,16)"
+                                style="
+                                  text-anchor: middle;
+                                  dominant-baseline: hanging;
+                                "
+                              >
+                                63.4
+                              </text>
+                              <!----><!---->
+                            </g>
+                            <g
+                              aria-hidden="true"
+                              class="swatch svelte-a5wbg4"
+                              transform="translate(136,0)"
+                            >
+                              <!----><!---->
+                              <rect
+                                class="legend-color"
+                                width="33"
+                                height="13"
+                                style="fill: rgb(37, 75, 140)"
+                              ></rect>
+                              <!----><!---->
+                              <text
+                                transform="translate(0,16)"
+                                style="
+                                  text-anchor: middle;
+                                  dominant-baseline: hanging;
+                                "
+                              >
+                                80.2
+                              </text>
+                              <!----><!---->
+                            </g>
+                            <!---->
+                          </g></svg
+                        ><!---->
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="map-outer"
+                    aria-label='Map of "India » Uttarakhand » Districts" with 13 regions colored by numerical value "VALUE", with values ranging from 13 to 97. Map is interactive. Enter and use arrow keys to access tooltip content for each region.'
+                  >
+                    <canvas
+                      aria-hidden="true"
+                      width="2350"
+                      height="650"
+                      style="width: 2350px; height: 650px"
+                    ></canvas
+                    ><svg
+                      class="svg-main uttrakand-districts"
+                      aria-hidden="true"
+                      width="2350"
+                      height="650"
+                      style="width: 100%; overflow: hidden; position: relative"
+                    >
+                      <defs></defs>
+                      <g class="map" transform="translate(0,0) scale(1)">
+                        <rect
+                          class="background"
+                          width="2350"
+                          height="650"
+                        ></rect>
+                        <path
+                          class="region-outline hover-outline has-data"
+                          d="M635.6370602151437,352.2709134044526L635.6366836758752,349.51456534443423L634.2259955722038,341.2456697185953L628.8139168682101,337.16606641656836L629.3217478314546,333.5277566925033L631.689080030992,331.87413885630303L628.7029809145897,325.69963168527465L625.7733014011537,324.7618266926911L622.6743314192427,325.0363810041781L620.7044795809124,320.6804461275606L617.8884069375345,319.7417130067297L617.3286411309891,314.22865584375904L618.4025274283194,307.7794579341644L616.3199555782121,306.89608862496243L615.6461697941995,304.35977240493594L609.457571217361,300.55076266872857L610.3614487915183,297.02349849782695L606.030104602316,295.31008313012717L605.3006104816741,293.5451838919216L609.4130437667482,288.5881469461274L611.7239779525626,283.57374184210494L610.3763078793854,281.2571765036482L613.0223467584656,277.84164272157795L618.6447732723609,278.8379122587321L620.1644680774407,276.13753414313396L619.2095613017809,274.48320494438667L620.3924675006638,270.128810983515L622.304137700783,269.0271760074975L617.7535057825808,265.38638578558675L616.1830126677378,260.9200641214884L611.5213253504553,258.6561562820134L613.0967144768874,255.9562909439701L620.7924641554637,257.0639248973748L623.4338617499525,254.63950481108623L622.8733175036105,251.71755630908956L624.8962966229738,248.74144268711098L625.3467826303458,244.77244807147508L623.5505381677067,243.28340971962461L623.6074787652396,241.18861060481504L627.7627277518986,237.38605673331767L628.6052492855888,234.13372710897966L633.3196077073662,231.21230004511017L635.6762371756704,229.00701799239323L636.6849176458927,221.7301228908218L639.8816917560907,219.79988217156642L638.9833919973098,216.76818341839316L641.8419235585898,212.63269992718415L650.0293659325034,213.73048041402217L652.6027678477258,206.7824290185563L658.8792936675964,205.01208569505616L661.8977771767895,198.3932580881119L662.5072991982233,193.10032219800632L657.0136509217409,190.12994825857095L652.3050445699118,186.55123028659L650.9570066838933,181.81146867978168L651.6823513290801,178.66867191211713L649.8884477606844,175.74839161202544L645.7451856984335,174.86911754505854L648.2596994663254,168.1421252870823L643.2772066728139,164.67203691511168L643.2201881720903,162.41188779109143L639.8065398826511,160.37355682350608L638.1828954529265,155.52291459030675L635.7216520296643,154.47599971674208L636.1127897620026,152.10551776060674L638.7969424756302,151.11266444044304L637.8454133545383,147.5848385355457L640.8085834943195,146.7570640113954L642.5951416739626,140.80273923606364L645.1661141844452,140.19508089678857L646.3388364612765,138.37524894156377L644.8839607920017,135.28902620360896L644.7701686307482,131.54052737839447L647.0602504127237,130.27129709444125L647.7831837362755,125.19925367879114L644.485030240081,120.62577322157813L644.9866079054118,118.69610675575314L649.0059396210854,116.70904801031065L651.0720353686193,116.76259881182705L654.3687276767159,119.01985721953679L656.8792665844812,116.70205791381522L655.5354984681835,113.12027283581483L656.5924228189469,109.48090119525295L652.5160424674832,107.88616541410374L652.6815853791195,105.73612520476308L655.5252787323698,103.0323059259972L661.8298334881911,101.86750198718073L664.6171739062847,99.87926606128894L665.5621316313482,97.39728308505073L668.1263999934745,96.01532297124504L669.0698365745775,92.9268207283967L673.8094142726914,91.92654942211084L675.2639082328678,94.18403792703612L675.2730331216881,99.0350649170905L676.8442349006946,103.6075188200557L679.1879067545306,103.4926407763378L686.1018468236289,100.88669902685797L691.2937029266395,101.81118332032565L693.0783606698315,101.42068453247339L693.5357069141028,105.4987862030357L695.0444378555185,106.15625533461571L694.9984515889009,109.73956091186483L697.8512212194546,111.77131888189615L702.563706615656,119.25464136332084L705.6965188721879,120.95383766538725L709.6082082748107,121.60262816137038L712.352034944015,123.63298132971249L715.1404409471215,122.41039873798582L716.2512313746774,120.69748315057222L719.2651749008146,120.19022468709954L725.0065116619517,117.46675675139704L725.491105710571,113.0546996326666L727.3339521916787,113.15745864310156L732.6501546938671,115.94646964684944L740.4532385973725,112.93448469064606L743.1629379670339,107.57437636759641L748.042418190038,112.1811197979041L750.7773998616249,112.05702263157582L752.350697980808,113.9783531614703L754.5819127546347,113.58078099445993L755.931694541061,115.39279842751421L760.6237223749267,115.69801765079683L764.6378569064036,114.62799289140821L768.5041561037506,116.92090270080007L769.6920087391773,119.44973908397151L771.0864353807701,128.37206916894866L775.1133234395747,129.06424817888546L779.2963914366701,136.64571332462947L783.2643710496777,136.62020442245193L785.9935911035645,135.2240640964883L787.5151361982716,137.08827575436953L791.5451994346513,137.942983848101L793.1841871827055,140.52269190804145L795.758561850962,140.94570757094698L799.8189841307903,145.82315558456685L802.681808551919,147.34589831711128L804.1840265271967,146.3424966434468L809.0859972168982,151.21211039390255L811.7586795246025,156.86987383329688L813.7312286102751,158.72892525365023L810.914217599362,163.38161488153128L813.8654542934819,168.65112556561508L815.1312442882117,172.99640933224146L812.6726504816252,173.5669183022692L808.0787780007595,173.10596375325258L805.6788800366339,174.06118876265828L802.977236556595,172.0965485088418L799.8411335670826,171.8988596431409L793.2061590628364,175.6393760916908L790.6461367403972,177.86210289300288L786.3992008016066,179.10347186446597L785.7939463331277,180.70620215730014L787.7200330713895,184.00112059840103L794.1711108322997,185.50071788519926L797.675058880719,189.88637841838863L797.1854719086186,191.92962302254818L800.2290569473043,194.44379134528572L803.0472543117576,204.2914035521244L799.6977298270431,206.1901087139595L796.4220764580095,210.67886969141182L796.6659020941588,213.43360385019696L794.3853931863487,216.09576779599956L793.7331625229563,219.07726019027177L795.551624525353,222.42747283083008L795.8577475962593,226.06384932365108L796.9853064575145,226.82772477065737L798.5392378912438,232.2744963691075L796.1935117829926,233.88983266025753L798.6285033995664,236.9047173499348L798.7059416859483,239.88114618463806L802.2510627570882,241.0133315258463L800.7310090457759,248.191160695922L802.3106667406828,249.17205026540614L800.9362072110162,253.2615847430643L798.1449808490215,255.70724515036272L796.4237176312818,258.58611443064L794.0724582740804,259.8153411173553L794.0089963592327,266.8723221947075L792.0709490777517,271.13058352873486L790.1872781148777,275.222922654415L785.591822748429,277.5137497275973L783.4433749459786,275.7084576496927L780.4083185008203,275.89323780473933L778.2862440168246,278.22197503857024L774.8070236842468,279.4011067674219L773.4667472871151,280.9528270208393L768.5246414031644,282.1397870035471L764.0602612425137,278.3614513680877L759.7834162608924,277.7787059834118L753.7226618974892,280.12629523672877L755.323912288899,285.1897468668176L757.311112268384,288.65231857457184L756.7567610602855,290.19886227004827L758.1235662850304,293.27875682822196L756.6717518358855,295.3813794096459L753.920157076951,296.49837492877487L752.5924784935341,300.97061183934056L749.796715071112,304.6783686459603L750.8264336773063,307.9257579068508L749.939135926812,310.6315038614339L746.9668977742258,313.1269731927423L747.3204343292527,316.32267853868325L750.6628637918329,320.1650525396035L750.1771527604433,324.4123673336835L752.679295446811,328.92020460003914L756.2265829219104,328.3504926573878L760.5905217108884,332.90274584727376L757.6787776877318,336.5017919287857L757.3654122875087,341.1893694329665L749.7205514453308,345.8595199103911L746.1640764859549,345.10519511463644L737.6549197526983,346.46788022055625L730.2042193288944,344.90132960656774L725.640275537371,345.85703463500977L721.1159670106354,342.4566168368365L715.1959333866907,342.5884581017999L710.8090639438742,345.9662705685114L705.2840427117262,346.48018333898654L702.018196871024,348.1990232170938L699.364323579066,347.10417845941265L697.7208927518586,344.24217652896186L691.8550091958095,343.70646097949793L689.2566358923868,341.8385580093891L687.0699450945976,347.1359573166883L686.5703528347804,350.61012776325515L687.363740659559,352.20697769026447L685.9532797929423,352.09997459043734L679.4222226924612,358.28816719657334L676.8908683071131,362.37249097805034L672.9371704325458,360.39505176280727L669.837469582897,362.82577233303164L666.3971440202367,364.3194174211785L662.7239011980564,360.57579479587L658.8223788085306,353.46911051228017L655.5505098778012,353.4725545135552L656.7968014031139,358.5429799446829L655.7861381442926,363.56055958324214L652.6818937587159,363.23267383742495L647.0392250699588,364.5599002693634L647.430436585717,358.4956902328595L645.793247532958,356.8979958670607L641.7305472774242,355.6871613935509L636.6523769777123,352.050244611215Z"
+                          style="
+                            vector-effect: non-scaling-stroke;
+                            stroke-width: 0.9px;
+                            stroke-linejoin: round;
+                            fill: none;
+                          "
+                        ></path>
+                      </g>
+                    </svg>
+                    <div class="annotations"></div>
+                    <div
+                      class="feature-focus"
+                      tabindex="0"
+                      role="img"
+                      aria-label="Map explorer. Use arrow keys to navigate between regions."
+                      style="left: 0px; top: 0px; width: 0px; height: 0px"
+                    >
+                      <div
+                        class="hint"
+                        aria-hidden="true"
+                        style="display: none"
+                      >
+                        Use the arrow keys
+                        <span class="kbd-group"
+                          ><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd
+                          ><kbd>→</kbd></span
+                        >
+                        to navigate through the map regions.
+                      </div>
+                    </div>
+                    <div
+                      class="sr-focus-announcer sr-only"
+                      aria-live="assertive"
+                    ></div>
+                  </div>
+                  <div
+                    class="dw-tooltip"
+                    aria-hidden="true"
+                    style="
+                      max-height: 309.6px;
+                      overflow-y: auto;
+                      visibility: visible;
+                      inset: 336px auto auto 723px;
+                    "
+                  >
+                    <h2>Chamoli</h2>
+                    44
+                  </div>
+                </div>
+              </div>
+              <!--]--><!---->
+            </div>
+            <!--]--><!---->
+            <!--[!--><!--]--><!---->
+          </div>
+          <!--]--><!---->
+          <!--[--><!----><!--[-->
+          <div class="container container-footer datawrapper-puVrj-1glppcz">
+            <!--[--><!--[!--><!--]--><!--[--><!----><!--[-->
+            <div
+              class="container container-footerMain datawrapper-puVrj-1jrvvdx"
+            >
+              <!--[--><!--[!--><!--]--><!--[--><!----><!----><span
+                class="block-mapAttribution datawrapper-puVrj-1nrs9uk"
+                ><!----><!----><span class="caption" aria-hidden="false"
+                  >Map data:</span
+                >
+                <!----><!----><!----><a
+                  target="_blank"
+                  href="https://www.openstreetmap.org/copyright"
+                  rel="nofollow noopener"
+                >
+                  © OSM </a
+                ><!----><!----></span
+              ><!----><!--]--><!----><!--[--><span class="separator"></span
+              ><wbr /><!--]--><!--[--><!----><!----><a
+                href="javascript:void(0)"
+                class="block-getTheData datawrapper-puVrj-idivi9"
+                target="_self"
+                ><!----><!----><span class="caption" aria-hidden="false"
+                  >Get the data</span
+                ><!----><!----><!----><!----></a
+              ><!----><!--]--><!----><!----><span class="separator"></span
+              ><wbr /><!----><!----><!----><!----><span
+                class="block-attribution datawrapper-puVrj-1nrs9uk"
+                ><!----><!----><span class="caption" aria-hidden="false"
+                  >Created with</span
+                >
+                <!----><!----><a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.datawrapper.de/_/puVrj"
+                  >Datawrapper</a
+                ><!----><!----></span
+              ><!----><!--]-->
+              <!---->
+            </div>
+            <!--]--><!----><!--]--><!----><!--]-->
+            <!---->
+          </div>
+          <!--]--><!----><!--]--><!---->
+          <!--[-->
+          <div class="container-afterChart svelte-1n0rdos">
+            <!--[--><!--]-->
+          </div>
+          <!--]--><!---->
+        </div>
+        <!--]--><!---->
+        <!--[!--><!--]-->
+      </div>
+      <!---->
+      <!--[!--><!--]-->
+      <!--[!--><link
+        rel="stylesheet"
+        href="//pt.dwcdn.net/puVrj.css"
+      /><!--]--><!--]-->
+    </div>
+    <script>
+      (function () {
+        window.__DW_SVELTE_PROPS__ = JSON.parse(
+          '{"chart":{"metadata":{"data":{"changes":[],"transpose":false,"vertical-header":true,"horizontal-header":true,"column-format":{"name":{"type":"text"},"VALUE":{"type":"number"}},"upload-method":"copy"},"describe":{"source-name":"","source-url":"","intro":"","byline":"","aria-description":"","number-format":"-","number-divisor":0,"number-append":"","number-prepend":""},"visualize":{"dark-mode-invert":true,"highlighted-series":[],"highlighted-values":[],"sharing":{"enabled":false,"url":"https://www.datawrapper.de/_/puVrj","auto":false},"labels":{"max":1,"type":"places","places":[],"enabled":false},"layers":{},"basemap":"uttrakand-districts","legends":{"color":{"size":170,"title":"","labels":"ruler","enabled":true,"offsetX":0,"offsetY":0,"reverse":false,"labelMax":"high","labelMin":"low","position":"above","hideItems":[],"interactive":false,"labelCenter":"medium","labelFormat":"0,0.[00]","orientation":"horizontal","customLabels":[],"titleEnabled":false},"pattern":{"size":170,"title":"","enabled":true,"offsetX":0,"offsetY":0,"position":"above","interactive":false,"orientation":"horizontal","titleEnabled":false,"useColorLegendPosition":true},"combined":{"orientation":"horizontal"}},"mapView":"full","miniMap":{"size":120,"type":"region","enabled":false,"offsetX":1,"offsetY":1,"position":"bottom-left"},"tooltip":{"body":"%REGION_VALUE%","title":"%REGION_NAME%","sticky":true,"enabled":true},"patterns":{"map":{},"order":[],"enabled":false,"opacity":50,"colorType":"auto-contrast"},"zoomable":false,"map-align":"center","colorscale":{"map":{},"mode":"discrete","stops":"equidistant","colors":[{"color":"#f0f9e8","position":0},{"color":"#b6e3bb","position":0.16666666666666666},{"color":"#75c8c5","position":0.3333333333333333},{"color":"#4ba8c9","position":0.5},{"color":"#2989bd","position":0.6666666666666666},{"color":"#0a6aad","position":0.8333333333333334},{"color":"#254b8c","position":1}],"palette":0,"rangeMax":"","rangeMin":"","stopCount":5,"customStops":[null,29.8,46.6,63.4,80.2,null,"","",""],"rangeCenter":"","categoryOrder":[],"interpolation":"equidistant","categoryLabels":{}},"map-padding":0,"map-key-attr":"name","map-type-set":true,"chart-type-set":true,"max-map-height":650,"min-label-zoom":1,"zoom-button-pos":"br","map-label-format":"0,0.[00]","text-annotations":[],"range-annotations":[],"hide-empty-regions":false,"mapViewCropPadding":10,"avoid-label-overlap":true},"axes":{"keys":"name","values":"VALUE"},"publish":{"embed-width":600,"embed-height":654,"blocks":{"logo":{"enabled":false},"embed":false,"download-pdf":false,"download-svg":false,"get-the-data":true,"download-image":false},"export-pdf":{},"chart-height":586,"embed-codes":{"embed-method-responsive":"<iframe title=\\"Map Of Uttarakhand\\" aria-label=\\"Choropleth map\\" id=\\"datawrapper-chart-puVrj\\" src=\\"https://datawrapper.dwcdn.net/puVrj/1/\\" scrolling=\\"no\\" frameborder=\\"0\\" style=\\"width: 0; min-width: 100% !important; border: none;\\" height=\\"654\\" data-external=\\"1\\"></iframe><script type=\\"text/javascript\\">window.addEventListener(\\"message\\",function(a){if(void 0!==a.data[\\"datawrapper-height\\"]){var e=document.querySelectorAll(\\"iframe\\");for(var t in a.data[\\"datawrapper-height\\"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data[\\"datawrapper-height\\"][t]+\\"px\\";r.style.height=d}}});<\/script>","embed-method-iframe":"<iframe title=\\"Map Of Uttarakhand\\" aria-label=\\"Choropleth map\\" id=\\"datawrapper-chart-puVrj\\" src=\\"https://datawrapper.dwcdn.net/puVrj/1/\\" scrolling=\\"no\\" frameborder=\\"0\\" style=\\"border: none;\\" width=\\"600\\" height=\\"654\\" data-external=\\"1\\"></iframe>","embed-method-web-component":"<div style=\\"min-height:654px\\" id=\\"datawrapper-vis-puVrj\\"><script type=\\"text/javascript\\" defer src=\\"https://datawrapper.dwcdn.net/puVrj/embed.js\\" charset=\\"utf-8\\" data-target=\\"#datawrapper-vis-puVrj\\"><\/script><noscript><img src=\\"https://datawrapper.dwcdn.net/puVrj/full.png\\" alt=\\"Map Of Uttarakhand (Choropleth map)\\" /></noscript></div>"}},"annotate":{"notes":""},"custom":{}},"title":"Map Of Uttarakhand","readonlyKeys":[],"publicId":"puVrj","language":"en-US","theme":"datawrapper","id":"puVrj","type":"d3-maps-choropleth","lastEditStep":4,"publishedAt":null,"publicUrl":"https://datawrapper.dwcdn.net/puVrj/1/","publicVersion":1,"forkable":false,"isFork":false,"externalData":null,"createdAt":"2025-11-08T19:37:10.000Z","lastModifiedAt":"2025-11-08T19:41:34.000Z","forkedFrom":null,"organizationId":null,"authorId":1034527,"folderId":null,"workspace":"ywfwzxpxyz"},"visualization":{"axes":{"keys":{"accepts":["text"],"preferred":"^(key|id|geo|ags|fips|iso)"},"values":{"accepts":["number","text"]},"labels":{"accepts":["text","number"],"optional":true},"pattern":{"accepts":["text"],"optional":true}},"controls":{"migrate":"/lib/plugins/visualizations/static/d3-maps-migrate.js","views":{"Refine":"d3-maps-choropleth/refineControls","Annotate":"d3-maps-choropleth/annotateControls"}},"defaultMetadata":{"zoomable":false,"zoom-button-pos":"br","hide-empty-regions":false,"mapView":"full","mapViewCropPadding":10,"min-label-zoom":1,"map-padding":0,"map-align":"center","map-label-format":"0,0.[00]","max-map-height":650,"avoid-label-overlap":true,"colorscale":{"map":{},"mode":"continuous","stops":"equidistant","interpolation":"equidistant","colors":[],"palette":0,"rangeMin":"","rangeMax":"","stopCount":5,"customStops":[],"rangeCenter":"","categoryOrder":[],"categoryLabels":{}},"tooltip":{"enabled":true,"sticky":true,"title":"%REGION_NAME%","body":"%REGION_VALUE%"},"legends":{"combined":{"orientation":"horizontal"},"color":{"enabled":true,"reverse":false,"interactive":false,"title":"","size":170,"labels":"ranges","orientation":"horizontal","position":"above","labelMin":"low","labelCenter":"medium","labelMax":"high","offsetX":0,"offsetY":0,"customLabels":[],"hideItems":[]},"pattern":{"enabled":true,"title":"","titleEnabled":false,"interactive":false,"size":170,"orientation":"horizontal","position":"above","useColorLegendPosition":true,"offsetX":0,"offsetY":0}},"text-annotations":[],"miniMap":{"enabled":false,"type":"region","offsetX":1,"offsetY":1,"position":"bottom-left","size":120},"patterns":{"enabled":false,"map":{},"order":[],"opacity":50,"colorType":"auto-contrast"}},"dependencies":{"globalize":false,"jquery":false,"dayjs":true,"numeral":true},"height":"fixed","icon":"<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"30\\" height=\\"30\\" viewBox=\\"0 0 30 30\\">\\n  <path fill=\\"#60ACC6\\" d=\\"m24.69 15.929-.945.464.237-.697-.54.496-.357-.148-.358.208-.566-.596-.566.03-.327 1.013L21 16.37h-.507l-.238.268-.774-.09-.358-.118.12.715-.194.363-.056.34.537.875-.34.594-.65-.198-.677.282.452 1.159-.509.14-.339.764.316.476.09.715.774.328h.715l.238-.298.149-.566.595.417.12-.149.744-.03.477.209.596-.09.893.686.09.566 1.161.476.358-.357.268.149.208-.209.566-.06.09-.238.506-.09-.268-.297-.328-.358-.03-.417.314-.364V20.57l-.945-.928.945-.464v-.929l-.473-1.393-.472-.928h-.473Z\\"/>\\n  <path fill=\\"#60ACC6\\" d=\\"m18.073 25.679 1.418-.929.437.107.327-.443-.566-.507-.417-.238-.625.209-.358-.12.12-.357-.18-.328-.357-.417-.09-.715-.315-.476-.593-.791-.34.734-.649.057-.904.395.17.593-1.017.311-.792-.226-.084-.904-.452-.226-1.121-.282-.703.678-.408 1.186h.593l-.185.678h-.55l-.254.876.396.206.226.698-.622.96-.217.834 1.494.294.472-.465 2.837.929.945-.929H17.6l.473-1.392ZM13.399 9.893l-.31-.929.94.02.328-.417.12-.566.446-.03.477.268.476.179.715-.238-.09 1.012-.118.775-.12.357.239.477.804-.03.268-.685.596-.06.328-.685.208.09.477.179.685-.596.149.238.655.298.09.238.238.924-.209.327-.804.239-.06.297.15.358-.388.745.03.506.208.506-.417.328.15.745-.537.208-.357.03.208.506.417.268.15.388-.418.268.12.715-.194.363-.678-.338-.932-.255-.113-.395-.65.395-.678-.79-.932-.255-.989.226-1.13.339-.17.421-1.092.144-.518-.876.288-1.497-.44-.906.44-.115.23-1.268.697-.125.565-.948.141-1.017.311-.356Z\\"/>\\n  <path fill=\\"#92CADC\\" d=\\"m24.218 15 1.418-2.786-.079-.4-.268-.298-.655-.447-.685.06-.417-.18-.388.18-.387-.388.06-.268-.239-.298-.297-.178-.12-.358-.715-.387-.148-.238-.298-.03-.03.268-.298.298.09.238.238.924-.209.327-.804.239-.06.297.15.358-.388.745.03.506.208.506-.417.328.15.745-.537.208-.357.03.208.506.417.268.15.388-.418.268.358.119.774.09.238-.269H21l.268.328.327-1.013.566-.03.566.596.358-.208.357.148.54-.496.236-.696Zm2.837 7.429-.946-.465-.314.364.03.418.328.357.268.298-.506.09-.09.238-.566.06-.208.208-.268-.15-.358.358-1.162-.476-.089-.566-.893-.686-.596.09-.477-.209-.744.03-.12.149-.595-.417-.15.566-.238.298h-.715l-.774-.328.358.417.178.328-.119.357.357.12.626-.21.417.24.566.506-.327.443 1.454.357h.945l1.891.929.946-.464 2.363-2.322.473-.928h-.945ZM8.145 21.5l-1.89 3.714.945.929 1.89.928.87.171.218-.833.622-.96-.226-.699-.396-.206.254-.876h.55l.185-.678h-.593l.408-1.186.703-.678v-.424h-.703l.185-1.06.518-.692 1.403-1.666-.31-.427-1.093.144-.518-.876.287-1.497-.44-.906-.44.115-1.074.234-.882-.234-.473.452-1.418-.682-.472.464.945 1.393.945.465.473.928-.473.929.473.464-.473 3.25Z\\"/>\\n  <path fill=\\"#92CADC\\" d=\\"m24.218 15 1.418-2.786-.079-.4-.268-.298-.655-.447-.685.06-.417-.18-.388.18-.387-.388.06-.268-.239-.298-.297-.178-.12-.358-.715-.387-.148-.238-.298-.03-.03.268-.298.298.09.238.238.924-.209.327-.804.239-.06.297.15.358-.388.745.03.506.208.506-.417.328.15.745-.537.208-.357.03.208.506.417.268.15.388-.418.268.358.119.774.09.238-.269H21l.268.328.327-1.013.566-.03.566.596.358-.208.357.148.54-.496.236-.696Z\\"/>\\n  <path fill=\\"#1D81A2\\" d=\\"M11.685 20.702v.424l1.12.282.453.226.085.904.79.226 1.018-.31-.17-.594.904-.395.65-.057.339-.734.593.79.34-.762.508-.141-.452-1.159.678-.282.65.198.339-.594-.537-.875.056-.34-.678-.338-.932-.255-.113-.395-.65.395-.678-.79-.932-.255-.989.226-1.13.339-.17.421.311.427-1.403 1.666-.518.693-.185 1.059h.703Zm-.231-14.523.473.464-.242.119.584.81.113.928.706.464.942.02.327-.417.12-.566.446-.03.477.268.476.179.715-.238-.09 1.013-.118.774-.12.357.239.477.804-.03.268-.685.596-.06.328-.685.208.09.477.179.685-.596.149.238.655.298.298-.298.03-.268.298.03.149.238.714.387.12.358.297.178.239.298-.06.268.387.388.388-.18.417.18.685-.06.655.447.268.298.08.4.945-.464V8.964l.945-1.393h-2.836l-.473-.928h-1.89l-1.42-1.393h-.945l-1.891-1.393-.946-.464L16.182 2l-1.418.929-.473 1.857-2.837 1.393Z\\"/>\\n  <path fill=\\"#186D89\\" d=\\"m5.782 12.214.945 1.393 1.418.682.473-.452.882.234 1.074-.234.44-.115.44-.115.23-1.268.698-.125.565-.948.141-1.017.311-.356-.31-.929-.707-.464-.113-.929-.584-.809-.703.345-1.891-.464v-.464l-1.418-.465v.465l.472 1.857.473.928H5.782l-.946-.928-.472.464H2.945L2 8.964l.473.465L2 9.893v.928h.945l2.837 1.393Z\\"/>\\n</svg>\\n","id":"d3-maps-choropleth","libraries":[],"namespace":"map","supportsFitHeight":true,"title":"vis-d3-maps / Choropleth map","workflow":"d3-maps-choropleth","__visHash":"d5bcebba","__plugin":"visualizations","__styleHash":"99914b93","__title":"Choropleth map","beta":false,"script":"/home/ubuntu/code/plugins/visualizations/static/d3-maps-choropleth.js","less":"/home/ubuntu/code/plugins/visualizations/src/d3-maps/less/d3-maps-choropleth.less","hash":"d5bcebba","dwJsHash":"0f17cae4"},"theme":{"id":"datawrapper","title":"Datawrapper","data":{"vis":{"base":{"grid":{"general":{"baseLine":{"aboveChart":true},"tickLines":{"aboveChart":true},"tickLabels":{"units":"first","aboveChart":true}}},"format":{"minusCharacter":"\u2212","plusMinusCharacter":"\u00B1"},"annotations":{"line":{"color":"#888","opacity":0.5},"range":{"color":"#888","opacity":0.1}},"panels":{"title":{"fontSize":13}}},"d3-maps-core":{"places":{"capital":{"label":{"fontStyle":"normal","fontWeight":{"normal":700}}},"general":{"label":{"color":{"normal":"#ffffff","inverted":"#525252"},"buffer":{"color":{"normal":"#323232","inverted":"#ffffff"}},"fontStyle":"normal","fontWeight":{"normal":400}},"symbol":{"fill":{"normal":"#ffffff","inverted":"#525252"},"stroke":{"normal":"#323232","inverted":"#ffffff"}}}}},"d3-pies":{"labels":{"group":{"name":{"fontSize":14}},"center":{"fontSize":14}}},"multiple-lines":{},"d3-maps-symbols":{"regionFill":"#ededed"}},"colors":{"picker":{"controls":{"hue":true,"lightness":true,"saturation":true,"hexEditable":true},"rowCount":6,"showDuplicates":false},"neutral":"#CCCCCC","palette":["#18a1cd","#1d81a2","#15607a","#00dca6","#09bb9f","#009076","#c4c4c4","#c71e1d","#fa8c00","#ffca76","#ffe59c"],"negative":"#E31A1C","positive":"#85B4D4","gradients":[["#f0f9e8","#b6e3bb","#75c8c5","#4ba8c9","#2989bd","#0a6aad","#254b8c"],["#fcfcbe","#fdc78d","#fb8d67","#e45563","#ac337b","#6b1f7b","#2c1160"],["#f0f723","#fbbf2b","#f38a47","#d8586a","#ac2790","#6703a5","#0d0787"],["#fefaca","#008b15"],["#feebe2","#fcc5c0","#fa9fb5","#f768a1","#c51b8a","#7a0177"],["#ffffcc","#c7e9b4","#7fcdbb","#41b6c4","#2c7fb8","#253494"],["#8c510a","#d8b365","#f6e8c3","#f5f7ea","#c7eae5","#5ab4ac","#01665e"],["#c51b7d","#e9a3c9","#fde0ef","#faf6ea","#e6f5d0","#a1d76a","#4d9221"],["#b2182b","#ef8a62","#fddbc7","#f8f6e9","#d1e5f0","#67a9cf","#2166ac"]],"background":"#ffffff","categories":[["#F6D500","#0B91A7","#00CABD","#C2C100","#BA403E","#EF7F36","#2D4F84","#85BDF4","#9EF1BF","#D3F3FD"],["#7fc97f","#beaed4","#fdc086","#ffff99","#386cb0","#f0027f","#bf5b17","#666666"],["#fbb4ae","#b3cde3","#ccebc5","#decbe4","#fed9a6","#ffffcc","#e5d8bd","#fddaec","#f2f2f2"],["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a","#ffff99","#b15928"]],"bgBlendRatios":{"value":0},"chartContentBaseColor":"#181818"},"metadata":{"publish":{"blocks":{"logo":{"enabled":false},"embed":false,"download-pdf":false,"download-svg":false,"get-the-data":true,"download-image":false}}},"overrides":[{"type":"darkMode","settings":{"colors.gradients":[["#254b8c","#0a6aad","#2989bd","#4ba8c9","#75c8c5","#b6e3bb","#f0f9e8"],["#2c1160","#6b1f7b","#ac337b","#e45563","#fb8d67","#fcfcbe","#fdc78d"],["#0d0787","#6703a5","#ac2790","#d8586a","#f38a47","#fbbf2b","#f0f723"],["#007001","#f6f4a6"],["#42342d","#683c39","#8f3e55","#c73a78","#ff6bca","#ffcbff"],["#253494","#2c7fb8","#41b6c4","#7fcdbb","#c7e9b4","#ffffcc"]],"colors.background":"#252525","vis.d3-maps-core.places.general.label.color.normal":"#000000","vis.d3-maps-core.places.general.symbol.fill.normal":"#000000","vis.d3-maps-core.places.general.label.color.inverted":"#e5e5e5","vis.d3-maps-core.places.general.symbol.fill.inverted":"#e5e5e5","vis.d3-maps-core.places.general.symbol.stroke.normal":"#bfbfbf","vis.d3-maps-core.places.general.label.buffer.color.normal":"#bfbfbf"}},{"settings":{"vis.base.grid.vertical.tickLabels.hideZero":true},"condition":["in",["get","type"],["column-chart","grouped-column-chart","stacked-column-chart"]]},{"settings":{"vis.base.grid.horizontal.tickLabels.units":"last"},"condition":["==",["get","type"],"d3-scatter-plot"]},{"settings":{"vis.base.grid.horizontal.tickLabels.units":"all"},"condition":["in",["get","type"],["d3-bars","d3-arrow-plot","d3-bars-bullet","d3-bars-grouped","d3-bars-stacked","d3-dot-plot","d3-range-plot"]]},{"settings":{"vis.base.grid.horizontal.gridLines.aboveChart":true},"condition":["==",["get","type"],"d3-bars-stacked"]},{"settings":{"vis.base.grid.horizontal.baseLine.aboveChart":false,"vis.base.grid.horizontal.baseLine.blendBaseColorWithBg":0.6},"condition":["in",["get","type"],["d3-dot-plot","d3-range-plot","d3-arrow-plot"]]},{"type":"darkMode","settings":{"vis.base.grid.horizontal.baseLine.blendBaseColorWithBg":0.85},"condition":["in",["get","type"],["d3-dot-plot","d3-range-plot","d3-arrow-plot"]]},{"settings":{"vis.base.grid.vertical.gridLines.major.strokeDasharray":"dotted"},"condition":["in",["get","type"],["d3-range-plot","d3-arrow-plot"]]},{"type":"darkMode","settings":{"blocks.shareTools.styles.buttons.base.color":"rgba(255,255,255,0.4)","blocks.shareTools.styles.buttons.twitter.hover.color":"#ffffff","blocks.shareTools.styles.buttons.facebook.hover.color":"#ffffff","blocks.shareTools.styles.buttons.linkedin.hover.color":"#ffffff"}},{"type":"darkMode","settings":{"vis.d3-maps-core.places.general.label.fontWeight.normal":500,"vis.d3-maps-core.places.general.label.fontWeight.inverted":400}},{"settings":{"blocks.bodyCenter.styles.gap":20,"vis.base.annotations.text.size":12},"condition":["==",["get","type"],"multiple-lines"]}],"blocks":{"body":{"styles":{"gap":20,"links":{"typography":{"color":"#0088CC","underlined":false}},"typography":{"color":"#181818","fontSize":12,"typeface":"Roboto,sans-serif"}}},"header":{"styles":{"gap":10}},"bodyTop":{"styles":{"gap":10,"layout":"flex-row"}},"filterUI":{"styles":{"tabs":{"color":"#666","hover":{"color":"#222"},"active":{"color":"#000000","border":{"bottom":"2px solid #555555"}},"border":{"bottom":"1px solid #cccccc"}},"point":{"line":{"color":"#ccc"},"buttons":{"hover":{"background":"#ebebeb"},"active":{"border":"1px solid #888","background":"#ccc"},"border":"1px solid #ccc"}},"select":{"border":"1px solid #cccccc","textColor":"#000"}}},"bodyCenter":{"styles":{"gap":10,"flexGrow":1,"maxWidth":"100%","minWidth":"0px"}},"shareTools":{"styles":{"gap":8,"buttons":{"base":{"color":"#a7a7a7","padding":"0px"},"twitter":{"hover":{"color":"#000000"}},"facebook":{"hover":{"color":"#1877F2"}},"linkedin":{"hover":{"color":"#2867B2"}}}}},"footer":{"styles":{"gap":5}},"footerMain":{"styles":{"layout":"inline","separator":{"margin":"0.249em"},"typography":{"color":"#888","fontSize":11}}},"notes":{"styles":{"typography":{"cursive":true,"color":"#656565"}}},"headline":{"styles":{"typography":{"fontSize":22,"fontWeight":700,"color":"#000000"}}},"description":{"styles":{"typography":{"lineHeight":17,"fontSize":14}}}},"version":2,"regions":{"footer":{"type":"container","children":[{"type":"notes"},{"id":"footerMain","type":"container"}]}},"defaultFooterRegion":"footerMain","export":{"pdf":{"fonts":{"Roboto Bold":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Bold.ttf","Roboto Light":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Light.ttf","Roboto Medium":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Medium.ttf","Roboto Regular":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Regular.ttf","Roboto Bold Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-BoldItalic.ttf","Roboto Light Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-LightItalic.ttf","Roboto Medium Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-MediumItalic.ttf","Roboto Regular Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Italic.ttf"},"cmykColors":[],"defaultFont":"Roboto Regular"}},"fontFamilies":{"Roboto":[{"name":"Roboto Regular","style":"normal","weight":400},{"name":"Roboto Light","style":"normal","weight":300}]}},"less":"\\n\\n\\n\\n\\n","assets":{"Roboto":{"type":"font","import":"https://static.dwcdn.net/css/roboto.css","method":"import"}},"extend":"default-2018-v2","url":"/v3/themes/datawrapper","_computed":{"locator-maps":{"mapStyles":[{"id":"dw-light","colors":{"land":"#f2f3f0","highlightRegion":{"fill":"#ffffff","stroke":"#888"},"areaMarker":{"fill":"#000","stroke":"#888"},"lineMarker":{"stroke":"#888"}}},{"id":"dw-earth","colors":{"land":"#e8e5d8","highlightRegion":{"fill":"#ffffff","stroke":"#888"},"areaMarker":{"fill":"#000","stroke":"#888"},"lineMarker":{"stroke":"#888"}}},{"id":"dw-white","colors":{"land":"#f4f4f4","highlightRegion":{"fill":"#ffffff","stroke":"#888"},"areaMarker":{"fill":"#000","stroke":"#888"},"lineMarker":{"stroke":"#888"}}},{"id":"dw-white-invert","colors":{"land":"#ffffff","highlightRegion":{"fill":"#f2f3f0","stroke":"#888"},"areaMarker":{"fill":"#000","stroke":"#888"},"lineMarker":{"stroke":"#888"}}}],"defaultPointMarker":{"markerColor":"#333333","markerTextColor":"#333333","text":{"color":"#333333","halo":"#f2f3f0"}},"darkMode":{"mapStyles":[],"defaultPointMarker":{"text":{}}}},"original":{"annotations":{"line":{"color":"#888","opacity":0.5},"range":{"color":"#888","opacity":0.1}}},"bgLight":"#ffffff","bgDark":"#252525","origGradients":[["#f0f9e8","#b6e3bb","#75c8c5","#4ba8c9","#2989bd","#0a6aad","#254b8c"],["#fcfcbe","#fdc78d","#fb8d67","#e45563","#ac337b","#6b1f7b","#2c1160"],["#f0f723","#fbbf2b","#f38a47","#d8586a","#ac2790","#6703a5","#0d0787"],["#fefaca","#008b15"],["#feebe2","#fcc5c0","#fa9fb5","#f768a1","#c51b8a","#7a0177"],["#ffffcc","#c7e9b4","#7fcdbb","#41b6c4","#2c7fb8","#253494"],["#8c510a","#d8b365","#f6e8c3","#f5f7ea","#c7eae5","#5ab4ac","#01665e"],["#c51b7d","#e9a3c9","#fde0ef","#faf6ea","#e6f5d0","#a1d76a","#4d9221"],["#b2182b","#ef8a62","#fddbc7","#f8f6e9","#d1e5f0","#67a9cf","#2166ac"]]},"fonts":{"Roboto":{"type":"font","import":"https://static.dwcdn.net/css/roboto.css","method":"import"}}},"chartAfterHeadHTML":"<meta property=\\"og:image\\" content=\\"https://datawrapper.dwcdn.net/puVrj/plain-s.png?v=1\\">\\n<meta name=\\"twitter:card\\" content=\\"summary_large_image\\">\\n<meta name=\\"twitter:image\\" content=\\"https://datawrapper.dwcdn.net/puVrj/plain-s.png?v=1\\">\\n<link rel=\\"alternate\\" type=\\"application/json+oembed\\"\\n  href=\\"https://api.datawrapper.de/v3/oembed?url=https://datawrapper.dwcdn.net/puVrj/1/&format=json\\"\\n  title=\\"oEmbed\\" />","translations":{"accessibility / annotations / multiple":"The chart has %count% annotations.","accessibility / annotations / single":"The chart has one annotation.","accessibility / area-chart / multiple":"Area chart with %count% areas","accessibility / area-chart / single":"Area chart with one area","accessibility / area-values":"Area showing %count% values for \\"%name%\\".","accessibility / axis-labels":"The horizontal axis is labeled as \\"%xlabel%\\", the vertical axis is labeled as \\"%ylabel%\\".","accessibility / clear-search":"Clear search input.","accessibility / current-rows":"Currently displaying rows $0 to $1","accessibility / current-rows / search-results":"of $0 results for search term \\"$1\\".","accessibility / line-chart / multiple":"Line chart with %count% lines","accessibility / line-chart / single":"Line chart with a single line","accessibility / line-values":"Line showing %count% values for \\"%name%\\".","accessibility / pagination-button":"Go to page $0 of $1.","accessibility / rank":"Rank","accessibility / scatterplot":"Scatterplot with %count% symbols","accessibility / search-results":"Showing $0 results for search term \\"$1\\".","accessibility / sort-column":"by column \\"$0\\"","accessibility / sort-direction / ascending":"Sorted ascending","accessibility / sort-direction / descending":"Sorted descending","accessibility / sparkline":"Small %chart_type% with $0 values, ranging from $1 to $2.","accessibility / sparkline / type-columns":"column chart","accessibility / sparkline / type-line":"line chart","accessibility / sparkline-no-values":"Small %chart_type% with no values.","accessibility / stacked-area-chart / multiple":"Stacked area chart with %count% areas","accessibility / stacked-area-chart / single":"Stacked area chart with one area","accessibility / sticky-rows":"Including $0 sticky rows.","accessibility / summary":"Table with $0 columns and $1 rows.","accessibility / xy-grid / axis-log":"Axis uses logarithmic scale.","accessibility / xy-grid / axis-x-date":"Horizontal date axis, ranging from %from% to %to%.","accessibility / xy-grid / axis-x-log":"Horizontal axis, ranging from %from% to %to%.","accessibility / xy-grid / axis-x-number":"Horizontal axis, ranging from %from% to %to%.","accessibility / xy-grid / axis-x-text":"Horizontal category axis, ranging from %from% to %to%.","accessibility / xy-grid / axis-y-date":"Vertical date axis, ranging from %from% to %to%.","accessibility / xy-grid / axis-y-log":"Vertical axis, ranging from %from% to %to%.","accessibility / xy-grid / axis-y-number":"Vertical axis, ranging from %from% to %to%.","accessibility / xy-grid / axis-y-text":"Vertical category axis, ranging from %from% to %to%.","blocks / attribution":"Created with","blocks / byline / fork":"Based on","blocks / byline / chart":"Chart:","blocks / byline / map":"Map:","blocks / byline / table":"Table:","blocks / download-image":"Download image","blocks / download-pdf":"Download PDF","blocks / download-svg":"Download SVG","blocks / edit-in-datawrapper":"Create a copy","blocks / embed":"Embed","blocks / embed / caption":"You can copy and paste this <b>code to embed</b> the visualization:","blocks / get-the-data":"Get the data","blocks / map-attribution":"Map data","blocks / source":"Source","expanded-view-note":"This is the extended area for the inset map on mobile. You can disable this feature.","fallback-image-note":"(Please use a modern browser to see the interactive version of this visualization)","insufficient-data-bars":"<b>Not enough data to show a bar chart.</b> You need at least one numeric column in your dataset. Please go back to the <a href=\\"/chart/%chartid%/describe\\" target=\\"_parent\\">\\"Check & Describe\\"</a> step and check your data.","insufficient-data-columns":"<b>Not enough data to show a column chart.</b> You need at least one numeric column in your dataset. Please go back to the <a href=\\"/chart/%chartid%/describe\\" target=\\"_parent\\">\\"Check & Describe\\"</a> step and check your data.","insufficient-data-donut":"<b>Not enough data to show a donut chart.</b> You need at least one numeric column in your dataset. Please go back to the <a href=\\"/chart/%chartid%/describe\\" target=\\"_parent\\">\\"Check & Describe\\"</a> step and check your data.","insufficient-data-dot-plot":"<b>Not enough data to show a dot plot.</b> You need at least one numeric column in your dataset. Please go back to the <a href=\\"/chart/%chartid%/describe\\" target=\\"_parent\\">\\"Check & Describe\\"</a> step and check your data.","insufficient-data-lines":"<b>Not enough data to show a line or area chart.</b> Please go back to the <a href=\\"/chart/%chartid%/describe\\" target=\\"_parent\\">\\"Check & Describe\\"</a> step and check your data.","insufficient-data-pie":"<b>Not enough data to show a pie chart.</b> You need at least one numeric column in your dataset. Please go back to the <a href=\\"/chart/%chartid%/describe\\" target=\\"_parent\\">\\"Check & Describe\\"</a> step and check your data.","insufficient-data-range-arrow":"<b>Not enough data to show a range or arrow plot.</b> You need at least two numeric columns in your dataset. Please go back to the <a href=\\"/chart/%chartid%/describe\\" target=\\"_parent\\">\\"Check & Describe\\"</a> step and check your data.","no-results-found":"No matching records found","other":"Other","pagination":"Page $0 of $1","show-less":"Show less","show-more":"Show $0 more","symbol-labels-less-than-7":"%count% symbols are labelled: %labels%, and \\"%last%\\".","symbol-labels-more-than-7":"Some symbols are labelled, including %labels%, and %others% others.","table-search-placeholder":"Search in table","total":"Total","truncated-rows":"Additional $0 rows not shown.","accessibility / multiple-line-chart / chart-single":"A single line chart.","accessibility / multiple-line-chart / chart-multiple":"A grid of %count% line charts.","accessibility / multiple-line-chart / panel-group-multiple":"A group of %count% panels.","accessibility / multiple-line-chart / panel-group-single":"A group with a single panel.","accessibility / multiple-line-chart / panel-single":"Chart panel with title \\"%title%\\" containing one line.","accessibility / multiple-line-chart / panel-multiple":"Chart panel with title \\"%title%\\" containing %count% lines.","accessibility / multiple-line-chart / lines-multiple":"A group of %count% lines.","accessibility / multiple-line-chart / line":"Line showing %count% values for \\"%title%\\".","accessibility / color-legend / less-than":"less than","accessibility / color-legend / greater-equal-than":"greater than or equal to","accessibility / color-legend / continuous":"Continuous color legend, ranging from %from% to %to%.","accessibility / color-legend / continuous-title":"Continuous color legend, titled \\"%title%\\", ranging from %from% to %to%.","accessibility / color-legend / stepped":"Color legend with %count% steps, ranging from %from% to %to%.","accessibility / color-legend / stepped-title":"Color legend with %count% steps, titled \\"%title%\\", ranging from %from% to %to%.","accessibility / color-legend / category-single-title":"Category legend titled \\"%title%\\" with 1 item, %item%.","accessibility / color-legend / category-single":"Category legend with 1 item, %item%.","accessibility / color-legend / category-few-title":"Category legend with %count% items, titled \\"%title%\\". %items_description%","accessibility / color-legend / category-few":"Category legend with %count% items. %items_description%","accessibility / color-legend / category-many-title":"Category legend with %count% items, titled \\"%title%\\". %items_description%","accessibility / color-legend / category-many":"Category legend with %count% items. %items_description%","accessibility / color-legend / category-items-few":"The items are %items%.","accessibility / color-legend / category-items-many":"The first 3 items are %items%. The last one is %last%.","accessibility / multiple-line-chart / panel-single-annotation-single":"Chart panel with title \\"%title%\\" containing one line and one annotation.","accessibility / multiple-line-chart / panel-multiple-annotation-single":"Chart panel with title \\"%title%\\" containing %count% lines and one annotation.","accessibility / multiple-line-chart / panel-multiple-annotation-multiple":"Chart panel with title \\"%title%\\" containing %count% lines and %annotations% annotations.","accessibility / multiple-line-chart / panel-single-annotation-multiple":"Chart panel with title \\"%title%\\" containing one line and %annotations% annotations.","accessibility / multiple-line-chart / annotation-single":"The panel has one annotation.","accessibility / multiple-line-chart / annotation-multiple":"The panel has %count% annotations.","accessibility / multiple-column-chart / chart-single":"A single column chart.","accessibility / multiple-column-chart / chart-multiple":"A grid of %count% column charts.","accessibility / multiple-column-chart / panel-group-multiple":"A group of %count% panels.","accessibility / multiple-column-chart / panel-group-single":"A group with a single panel.","accessibility / multiple-column-chart / columns-multiple":"A group of %count% columns.","accessibility / multiple-column-chart / annotation-single":"The panel has one annotation.","accessibility / multiple-column-chart / annotation-multiple":"The panel has %count% annotations.","accessibility / multiple-column-chart / overlays":"Overlaid: %labels%","accessibility / multiple-column-chart / range-overlay":"range from %category1%, %value1%, to %category2%, %value2%","accessibility / multiple-column-chart / panel":"Chart panel with title \\"%title%\\". Contains: %contents%.","accessibility / multiple-column-chart / panel-item-single":"one column","accessibility / multiple-column-chart / panel-item-multiple":"%count% columns","accessibility / multiple-column-chart / panel-annotation-single":"one annotation","accessibility / multiple-column-chart / panel-annotation-multiple":"%count% annotations","accessibility / multiple-column-chart / panel-overlay-single":"one overlay","accessibility / multiple-column-chart / panel-overlay-multiple":"%count% overlays","accessibility / multiple-line-chart / panel":"Chart panel with title \\"%title%\\". Contains: %contents%.","accessibility / multiple-line-chart / panel-item-single":"one line","accessibility / multiple-line-chart / panel-item-multiple":"%count% lines","accessibility / multiple-line-chart / panel-annotation-single":"one annotation","accessibility / multiple-line-chart / panel-annotation-multiple":"%count% annotations","accessibility / xy-grid / axis-x-text-category":"Horizontal category axis. Categories: %categories%.","accessibility / xy-grid / axis-y-text-category":"Vertical category axis. Categories: %categories%.","insufficient-data-arrow-map":"<b>Not enough data to show an arrow map.</b> You need an additional numerical column in your dataset to show your data with arrows. Please choose another map type, or go back to the <a href=\\"/map/%chartid%/data\\" target=\\"_parent\\">\\"Add your data\\"</a> step and check your data.","insufficient-data-election-donut":"<b>Not enough data to show an election donut.</b> You need at least one numeric column in your dataset. Please go back to the <a href=\\"/chart/%chartid%/describe\\" target=\\"_parent\\">\\"Check & Describe\\"</a> step and check your data.","insufficient-data-waterfall":"<b>Not enough data to show a waterfall chart.</b> Please go back to the <a href=\\"/chart/%chartid%/describe\\" target=\\"_parent\\">\\"Check & Describe\\"</a> step and check your data.","accessibility / range-overlay-legend-item":"range from %from% to %to%","accessibility / overlays / baseline":"baseline","accessibility / column-chart / chart-overview / with-comparison":"A group of %nCategories% sets of 2 columns, showing primary data for %mainColumnTitle% and reference data for %comparisonColumnTitle%","accessibility / column-chart / chart-overview / without-comparison":"A group of %columnCount% columns","accessibility / grouped-column-chart / chart-overview":"Grouped column chart with %nGroups% groups, each containing %nSeries% series.","accessibility / grouped-column-chart / series":"%seriesName%, column series %seriesNumber% of %seriesCount% with %columnCount% columns.","accessibility / stacked-column-chart / chart-overview":"Stacked column chart with %columnCount% columns, and data per column broken down into %seriesCount% series: %seriesList%","accessibility / stacked-column-chart / column-stack":"%xValue%, total value %totalValue%","accessibility / stacked-column-chart / column":"%seriesName%, %value%. Series %seriesNumber% of %seriesCount%.","accessibility / grouped-column-chart / column":"%groupName%, %seriesName%, %value%","accessibility / column-chart / column / with-comparison":"%category%, %mainColumnName%: %mainColumnValue%, %referenceColumnName%: %referenceColumnValue%","accessibility / column-chart / column / without-comparison":"%xValue%: %value%","accessibility / no-data":"no data","accessibility / stacked-column-chart / column-stack / no data":"%xValue%, no data","accessibility / stacked-column-chart / column-stack / mixed-polarity":"%xValue%, negative items add up to %negativeTotal%, positive items add up to %positiveTotal%.","accessibility / d3-bars / type":"bar chart","accessibility / d3-bars / type / plural":"bar charts","accessibility / d3-bars-stacked / type / plural":"stacked bar charts","accessibility / d3-bars-stacked / type":"stacked bar chart","accessibility / d3-bars-grouped / type":"grouped bar chart","accessibility / d3-bars-grouped / type / plural":"grouped bar charts","accessibility / d3-bars-bullet / type / plural":"bullet bar charts","accessibility / d3-bars-bullet / type":"bullet bar chart","accessibility / d3-dot-plot / type":"dot plot","accessibility / d3-dot-plot / type / plural":"dot plots","accessibility / d3-arrow-plot / type":"arrow plot","accessibility / d3-arrow-plot / type / plural":"arrow plots","accessibility / d3-range-plot / type / plural":"range plots","accessibility / d3-range-plot / type":"range plot","accessibility / d3-bars / group-overview":"A set of %nGroups% groups of %type%.","accessibility / d3-bars-split / group-overview":"%nGroups% tables showing numerical data by \\"%labelCol%\\" as bars across %nBarColumns% categories: %barColumnNames%.","accessibility / d3-bars / overview-single":"%chartType% with %contentDescription%.","accessibility / d3-dot-plot / time / type / plural":"timelines","accessibility / d3-dot-plot / time / type":"timeline","accessibility / d3-bars-split / overview-single":"Table with numerical data by \\"%labelCol%\\" across %nBarColumns% categories, shown as bars.","accessibility / d3-bars / group":"Group %index% of %nGroups% %chartType%%titleDescription%. Contains %contentDescription%.","accessibility / d3-bars / group / title-description":", with title: \\"%groupTitle%\\"","accessibility / d3-bars / content-description":"%nRows% bars","accessibility / d3-bars-stacked / content-description":"%nRows% bars, each broken down into %nBarColumns% series","accessibility / d3-bars-grouped / content-description":"%nRows% bar groups, each containing %nBarColumns% values","accessibility / d3-bars-bullet / content-description":"%nRows% bullet bar rows, comparing \\"%outer%\\" (outer bar) and \\"%inner%\\" (inner bar)","accessibility / d3-dot-plot / content-description":"%nRows% dot plot rows, each comparing values across %nBarColumns% categories","accessibility / d3-dot-plot / time / content-description":"%nRows% timelines, showing dates/timestamps of %nBarColumns% categories","accessibility / d3-arrow-plot / content-description":"%nRows% arrows, showing change from \\"%start%\\" to \\"%end%\\"","accessibility / d3-range-plot / content-description":"%nRows% ranges between \\"%start%\\" and \\"%end%\\"","accessibility / d3-bars / row":"Bar %index% of %nRows%, \\"%barLabel%\\": %value%","accessibility / d3-bars-stacked / row":"\\"%barLabel%\\", total value %totalValue%","accessibility / d3-bars / value":"\\"%label%\\": %value%","accessibility / d3-bars-grouped / row":"Bar group %index% of %nRows%, \\"%groupLabel%\\"","accessibility / d3-bars-bullet / row":"\\"%barLabel%\\", \\"%barOuterCol%\\": %barOuterValue%, \\"%barInnerCol%\\": %barInnerValue%","accessibility / d3-dot-plot / row":"Data for \\"%rowLabel%\\", containing %nValues% values","accessibility / d3-dot-plot / time / row":"Timeline for \\"%rowLabel%\\", containing %nValues% dates/timestamps","accessibility / d3-arrow-plot / row":"\\"%rowLabel%\\", \\"%startCol%\\": %startValue%, \\"%endCol%\\": %endValue%","accessibility / d3-range-plot / row":"\\"%rowLabel%\\", \\"%startCol%\\": %startValue%, \\"%endCol%\\": %endValue%","accessibility / d3-bars-split / group":"Table %index% of %nGroups%%titleDescription%.","accessibility / d3-dot-plot / type / time / group-item-plural":"sets of timelines","accessibility / d3-bars / grouped-by":"Grouped by: \\"%groupBy%\\".","accessibility / d3-bars-split / grouped-by":"Grouped per table by \\"%groupBy%\\".","accessibility / d3-bars-stacked / value-percent":"%value% (%percent% of total)","accessibility / d3-bars / no data":"no data","accessibility / resortable":"(column headers with buttons are sortable)","accessibility / d3-maps / zoom-controls":"Zoom controls","accessibility / d3-maps / zoom / in":"Zoom in","accessibility / d3-maps / zoom / out":"Zoom out","accessibility / d3-maps / zoom / home":"Reset zoom","accessibility / d3-maps-symbols / overview / number-range":", with values ranging from %range1% to %range2%.","accessibility / d3-maps-symbols / properties / size-and-color":"%symbolType% are sized and colored by numerical value \\"%column%\\"","accessibility / d3-maps-symbols / properties / size":"%symbolType% are sized by numerical value \\"%column%\\"","accessibility / d3-maps-symbols / overview / color-numeric":"%symbolType% are colored by numerical value \\"%column%\\"","accessibility / d3-maps-symbols / overview / color-category":"Symbols are colored by category \\"%column%\\", with %nCategories% categories. Categories are: %categories%.","accessibility / d3-maps-symbols / overview":"Data for %dataCount% locations shown as %symbolType% on a map of \\"%mapName%\\".","accessibility / d3-maps-symbols / overview / clustered":"Nearby points are grouped.","accessibility / d3-maps / interactive":"Map is interactive. Enter and use arrow keys to access %interactionContent% for %element%.","accessibility / d3-maps-symbols / interactive / element":"each data point","accessibility / d3-maps-choropleth / interactive / element":"each region","accessibility / d3-maps / interactive / tooltip":"tooltip content","accessibility / d3-maps / interactive / no-tooltip":"data","accessibility / d3-maps-symbols / type-arrows":"arrows","accessibility / d3-maps-symbols / type-symbols":"symbols","accessibility / d3-maps-symbols / aggregate / max":"Largest value for \\"%valueTitle%\\" in group is %value%.","accessibility / d3-maps-symbols / aggregate / min":"Smallest value for \\"%valueTitle%\\" in group is %value%.","accessibility / d3-maps-symbols / aggregate / median":"Median value for \\"%valueTitle%\\" in group is %value%.","accessibility / d3-maps-symbols / aggregate / sum":"Sum of values for \\"%valueTitle%\\" in group is %value%.","accessibility / d3-maps-symbols / aggregate / first / number":"First point has value %value% for \\"%valueTitle%\\".","accessibility / d3-maps-symbols / aggregate / first / text":"First point is categorized as \\"%value%\\" for \\"%valueTitle%\\".","accessibility / d3-maps-symbols / aggregate / common / text":"Most common category in group for \\"%valueTitle%\\" is \\"%value%\\".","accessibility / d3-maps-symbols / aggregate / common / number":"Most common value for \\"%valueTitle%\\" in group is %value%.","accessibility / d3-maps-symbols / cluster":"Symbol cluster aggregating %n% data points.","accessibility / d3-maps-symbols / symbol / address":"%symbolType% at \\"%location%\\".","accessibility / d3-maps-symbols / symbol / coord":"%symbolType% at coordinates %location%.","accessibility / d3-maps-symbols / type-symbol":"Symbol","accessibility / d3-maps-symbols / type-arrow":"Arrow","accessibility / d3-maps-symbols / arrow / value":"Arrow has value %value% for \\"%title%\\".","accessibility / d3-maps-symbols / arrow / category":"Arrow is categorized as \\"%title%\\".","accessibility / d3-maps-symbols / symbol / value":"Symbol has value %value% for \\"%title%\\".","accessibility / d3-maps-symbols / symbol / category":"Symbol is categorized as \\"%value%\\" for \\"%title%\\".","accessibility / d3-maps-choropleth / overview / number":"Map of \\"%mapName%\\" with %dataCount% regions colored by numerical value \\"%valueTitle%\\", with values ranging from %range1% to %range2%.","accessibility / d3-maps-choropleth / overview / text":"Map of \\"%mapName%\\" with %dataCount% regions colored by category \\"%valueTitle%\\", with %nCategories% categories. Categories are: %categories%.","accessibility / d3-maps-choropleth / overview / pattern-single":"Some regions additionally marked as \\"%category%\\".","accessibility / d3-maps-choropleth / overview / pattern-multiple":"Some regions additionally categorized by \\"%patternTitle%\\". Categories are %categories%.","accessibility / d3-maps-choropleth / region / location":"Map region identified by \\"%region%\\" from all map region \\"%regionType%\\".","accessibility / d3-maps-choropleth / region / label":"Region has label \\"%label%\\" for \\"%column%\\".","accessibility / d3-maps-choropleth / region / value / number":"Region has value %value% for \\"%title%\\".","accessibility / d3-maps-choropleth / region / value / text":"Region is categorized as \\"%value%\\" for \\"%title%\\".","accessibility / d3-maps-choropleth / region / no-pattern":"There is no category data for \\"%title%\\".","accessibility / d3-maps-symbols / aggregate / mean":"Mean value for \\"%valueTitle%\\" in group is %value%.","accessibility / d3-maps-choropleth / focus-element":"Map explorer. Use arrow keys to navigate between regions.","accessibility / d3-maps-symbols / focus-element":"Map explorer. Use arrow keys to navigate between symbols.","increase":"Increase","decrease":"Decrease","d3-maps-choropleth / focus-element":"Use the arrow keys %KEYS% to navigate through the map regions.","d3-maps-symbols / focus-element":"Use the arrow keys %KEYS% to navigate through the symbols.","accessibility / d3-arrow-plot / row / diff":", difference is %difference%","accessibility / d3-arrow-plot / row / change":", percentage change is %difference%","accessibility / d3-range-plot / row / change":", percentage change is %difference%","accessibility / d3-range-plot / row / diff":", difference is %difference%","accessibility / d3-bars-split / overview-single / no-label-title":"Table with numerical data across %nBarColumns% categories, shown as bars.","accessibility / d3-bars-split / group-overview / no-label-title":"%nGroups% tables showing numerical data by \\"%labelCol%\\" as bars across %nBarColumns% categories: %barColumnNames%.","d3-maps / pan-hint":"You can use the %KEYS% keys to pan around the map","accessibility / d3-pies / sm-grid":"A grid of %nPies% pie charts showing data broken down into %nCategories% categories.","accessibility / d3-pies / sm-grid / sort / ascending":"Slices in each pie are ordered by value, from smallest to largest.","accessibility / d3-pies / sm-grid / sort / descending":"Slices in each pie are ordered by value, from largest to smallest.","accessibility / d3-pies / pie / sort / descending":"Slices are ordered by value, from largest to smallest.","accessibility / d3-pies / pie / sort / ascending":"Slices are ordered by value, from smallest to largest.","accessibility / d3-pies / sm-pie":"Pie chart with data for \\"%label%\\", %nSlices% slices.","accessibility / d3-pies / pie / labeled":"Pie chart labeled as \\"%label%\\" with %nSlices% slices.","accessibility / d3-pies / pie":"Pie chart with %nSlices% slices.","accessibility / d3-pies / value":"\\"%label%\\": %value%","accessibility / d3-pies / highlighted-value":"Highlighted value -","accessibility / d3-pies / highlighted-values":"Highlighted values -","blocks / embed / close":"Close embed modal","blocks / embed / copy":"Copy embed code","blocks / embed / popup-title":"Embed modal","blocks / embed / copy-success":"Embed code copied to clipboard."},"assets":{"dataset.csv":{"load":true,"url":"dataset.csv"},"uttrakand-districts.json":{"load":true,"url":"../../lib/basemaps/uttrakand-districts.b2c039af.json"}},"externalDataUrl":"static.dwcdn.net/data","nextPublicUrl":"https://datawrapper.dwcdn.net/puVrj/1/","isIframe":true,"isPreview":false,"isExport":false,"locales":{"dayjs":{"base":"\\"use strict\\";\\n(function () {\\n    return {\\n        name: \'en\',\\n        weekdays: \'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday\'.split(\'_\'),\\n        months: \'January_February_March_April_May_June_July_August_September_October_November_December\'.split(\'_\'),\\n        formats: {\\n            LTS: \'h:mm:ss A\',\\n            LT: \'h:mm A\',\\n            L: \'MM/DD/YYYY\',\\n            LL: \'MMMM D, YYYY\',\\n            LLL: \'MMMM D, YYYY h:mm A\',\\n            LLLL: \'dddd, MMMM D, YYYY h:mm A\',\\n        },\\n        ordinal: function (n) {\\n            var s = [\'th\', \'st\', \'nd\', \'rd\'];\\n            var v = n % 100;\\n            return \'[\' + n + (s[(v - 20) % 10] || s[v] || s[0]) + \']\';\\n        },\\n    };\\n})();\\n","custom":{}},"numeral":{"base":"\\"use strict\\";\\n(function () {\\n    // numeral.js locale configuration\\n    // locale : American English\\n    return {\\n        delimiters: {\\n            thousands: \',\',\\n            decimal: \'.\',\\n        },\\n        abbreviations: {\\n            thousand: \'K\',\\n            million: \'M\',\\n            billion: \'B\',\\n            trillion: \'T\',\\n        },\\n        ordinal: function (number) {\\n            var b = number % 10;\\n            return ~~((number % 100) / 10) === 1\\n                ? \'th\'\\n                : b === 1\\n                    ? \'st\'\\n                    : b === 2\\n                        ? \'nd\'\\n                        : b === 3\\n                            ? \'rd\'\\n                            : \'th\';\\n        },\\n        currency: {\\n            symbol: \'$\',\\n        },\\n    };\\n})();\\n","custom":{}}},"webComponentJsHash":"ade62a7c","polyfillUri":"../../lib/vendor","downloadImageFilename":"map-of-uttarakhand","downloadDataFilename":"data-puVrj","sourceImageFilenames":{"png":"full","pdf":"full","svg":"full"},"downloadDataLocalized":false,"requiresAttribution":true,"ptStylesheet":"//pt.dwcdn.net/puVrj.css","allowPrintExport":false,"themeDataDark":{"vis":{"base":{"grid":{"general":{"baseLine":{"aboveChart":true},"tickLines":{"aboveChart":true},"tickLabels":{"units":"first","aboveChart":true}}},"format":{"minusCharacter":"\u2212","plusMinusCharacter":"\u00B1"},"annotations":{"line":{"color":"#878787","opacity":0.52},"range":{"color":"#878787","opacity":0.13}},"panels":{"title":{"fontSize":13}}},"d3-maps-core":{"places":{"capital":{"label":{"fontStyle":"normal","fontWeight":{"normal":"#ffdcff"}}},"general":{"label":{"color":{"normal":"#000000","inverted":"#e5e5e5"},"buffer":{"color":{"normal":"#bfbfbf","inverted":"#252525"}},"fontStyle":"normal","fontWeight":{"normal":500,"inverted":400}},"symbol":{"fill":{"normal":"#000000","inverted":"#e5e5e5"},"stroke":{"normal":"#bfbfbf","inverted":"#252525"}}}}},"d3-pies":{"labels":{"group":{"name":{"fontSize":14}},"center":{"fontSize":14}}},"multiple-lines":{},"d3-maps-symbols":{"regionFill":"#3c3c3c"}},"colors":{"picker":{"controls":{"hue":true,"lightness":true,"saturation":true,"hexEditable":true},"rowCount":6,"showDuplicates":false},"neutral":"#535353","palette":["#2584af","#4aa1c3","#84c2df","#19673c","#1e7c64","#27a186","#595959","#ff8068","#b15112","#6b470f","#4e400f"],"negative":"#ff5f4a","positive":"#3d6e8b","gradients":[["#254b8c","#0a6aad","#2989bd","#4ba8c9","#75c8c5","#b6e3bb","#f0f9e8"],["#2c1160","#6b1f7b","#ac337b","#e45563","#fb8d67","#fcfcbe","#fdc78d"],["#0d0787","#6703a5","#ac2790","#d8586a","#f38a47","#fbbf2b","#f0f723"],["#007001","#f6f4a6"],["#42342d","#683c39","#8f3e55","#c73a78","#ff6bca","#ffcbff"],["#253494","#2c7fb8","#41b6c4","#7fcdbb","#c7e9b4","#ffffcc"],["#eba25d","#7a5e12","#483f21","#35372d","#2b4945","#1f7b75","#75c6bc"],["#ff6cbd","#8c4d71","#513a46","#39362d","#323f22","#2b6311","#599e2d"],["#ff9791","#b15531","#583f2f","#37362c","#354750","#31799d","#7badfa"]],"background":"#252525","categories":[["#5d4b0f","#2598ae","#1c6f66","#5d6412","#ff7e75","#be5713","#acc5ff","#216596","#13512a","#244149"],["#24702d","#6b5d80","#764914","#34370f","#7aa5ee","#ff3a96","#e57a37","#aaaaaa"],["#834743","#3f576a","#314b2c","#5a4a60","#5b4216","#32350f","#534933","#573b4a","#393939"],["#335b6d","#59a2e1","#2e5a0f","#289824","#9f494b","#ff5f4a","#774a0f","#c04d12","#6d5878","#e1abff","#34370f","#e58551"]],"bgBlendRatios":{"value":0},"chartContentBaseColor":"#ffffff"},"metadata":{"publish":{"blocks":{"logo":{"enabled":false},"embed":false,"download-pdf":false,"download-svg":false,"get-the-data":true,"download-image":false}}},"overrides":[{"type":"darkMode","settings":{"colors.gradients":[["#254b8c","#0a6aad","#2989bd","#4ba8c9","#75c8c5","#b6e3bb","#f0f9e8"],["#2c1160","#6b1f7b","#ac337b","#e45563","#fb8d67","#fcfcbe","#fdc78d"],["#0d0787","#6703a5","#ac2790","#d8586a","#f38a47","#fbbf2b","#f0f723"],["#007001","#f6f4a6"],["#42342d","#683c39","#8f3e55","#c73a78","#ff6bca","#ffcbff"],["#253494","#2c7fb8","#41b6c4","#7fcdbb","#c7e9b4","#ffffcc"]],"colors.background":"#252525","vis.d3-maps-core.places.general.label.color.normal":"#000000","vis.d3-maps-core.places.general.symbol.fill.normal":"#000000","vis.d3-maps-core.places.general.label.color.inverted":"#e5e5e5","vis.d3-maps-core.places.general.symbol.fill.inverted":"#e5e5e5","vis.d3-maps-core.places.general.symbol.stroke.normal":"#bfbfbf","vis.d3-maps-core.places.general.label.buffer.color.normal":"#bfbfbf"}},{"settings":{"vis.base.grid.vertical.tickLabels.hideZero":true},"condition":["in",["get","type"],["column-chart","grouped-column-chart","stacked-column-chart"]]},{"settings":{"vis.base.grid.horizontal.tickLabels.units":"last"},"condition":["==",["get","type"],"d3-scatter-plot"]},{"settings":{"vis.base.grid.horizontal.tickLabels.units":"all"},"condition":["in",["get","type"],["d3-bars","d3-arrow-plot","d3-bars-bullet","d3-bars-grouped","d3-bars-stacked","d3-dot-plot","d3-range-plot"]]},{"settings":{"vis.base.grid.horizontal.gridLines.aboveChart":true},"condition":["==",["get","type"],"d3-bars-stacked"]},{"settings":{"vis.base.grid.horizontal.baseLine.aboveChart":false,"vis.base.grid.horizontal.baseLine.blendBaseColorWithBg":0.6},"condition":["in",["get","type"],["d3-dot-plot","d3-range-plot","d3-arrow-plot"]]},{"type":"darkMode","settings":{"vis.base.grid.horizontal.baseLine.blendBaseColorWithBg":0.85},"condition":["in",["get","type"],["d3-dot-plot","d3-range-plot","d3-arrow-plot"]]},{"settings":{"vis.base.grid.vertical.gridLines.major.strokeDasharray":"dotted"},"condition":["in",["get","type"],["d3-range-plot","d3-arrow-plot"]]},{"type":"darkMode","settings":{"blocks.shareTools.styles.buttons.base.color":"rgba(255,255,255,0.4)","blocks.shareTools.styles.buttons.twitter.hover.color":"#ffffff","blocks.shareTools.styles.buttons.facebook.hover.color":"#ffffff","blocks.shareTools.styles.buttons.linkedin.hover.color":"#ffffff"}},{"type":"darkMode","settings":{"vis.d3-maps-core.places.general.label.fontWeight.normal":500,"vis.d3-maps-core.places.general.label.fontWeight.inverted":400}},{"settings":{"blocks.bodyCenter.styles.gap":20,"vis.base.annotations.text.size":12},"condition":["==",["get","type"],"multiple-lines"]}],"blocks":{"body":{"styles":{"gap":20,"links":{"typography":{"color":"#4ba9f0","underlined":false}},"typography":{"color":"#ffffff","fontSize":12,"typeface":"Roboto,sans-serif"}}},"header":{"styles":{"gap":10}},"bodyTop":{"styles":{"gap":10,"layout":"flex-row"}},"filterUI":{"styles":{"tabs":{"color":"#aaaaaa","hover":{"color":"#ffffff"},"active":{"color":"#ffffff","border":{"bottom":"2px solid #bebebe"}},"border":{"bottom":"1px solid #535353"}},"point":{"line":{"color":"#535353"},"buttons":{"hover":{"background":"#3e3e3e"},"active":{"border":"1px solid #878787","background":"#535353"},"border":"1px solid #535353"}},"select":{"border":"1px solid #535353","textColor":"#ffffff"}}},"bodyCenter":{"styles":{"gap":10,"flexGrow":1,"maxWidth":"100%","minWidth":"0px"}},"shareTools":{"styles":{"gap":8,"buttons":{"base":{"color":"rgba(255,255,255,0.4)","padding":"0px"},"twitter":{"hover":{"color":"#ffffff"}},"facebook":{"hover":{"color":"#ffffff"}},"linkedin":{"hover":{"color":"#ffffff"}}}}},"footer":{"styles":{"gap":5}},"footerMain":{"styles":{"layout":"inline","separator":{"margin":"0.249em"},"typography":{"color":"#9d9d9d","fontSize":11}}},"notes":{"styles":{"typography":{"cursive":true,"color":"#bcbcbc"}}},"headline":{"styles":{"typography":{"fontSize":22,"fontWeight":700,"color":"#ffffff"}}},"description":{"styles":{"typography":{"lineHeight":17,"fontSize":14}}}},"version":2,"regions":{"footer":{"type":"container","children":[{"type":"notes"},{"id":"footerMain","type":"container"}]}},"defaultFooterRegion":"footerMain","export":{"pdf":{"fonts":{"Roboto Bold":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Bold.ttf","Roboto Light":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Light.ttf","Roboto Medium":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Medium.ttf","Roboto Regular":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Regular.ttf","Roboto Bold Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-BoldItalic.ttf","Roboto Light Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-LightItalic.ttf","Roboto Medium Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-MediumItalic.ttf","Roboto Regular Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Italic.ttf"},"cmykColors":[],"defaultFont":"Roboto Regular"}},"fontFamilies":{"Roboto":[{"name":"Roboto Regular","style":"normal","weight":400},{"name":"Roboto Light","style":"normal","weight":300}]}},"themeDataLight":{"vis":{"base":{"grid":{"general":{"baseLine":{"aboveChart":true},"tickLines":{"aboveChart":true},"tickLabels":{"units":"first","aboveChart":true}}},"format":{"minusCharacter":"\u2212","plusMinusCharacter":"\u00B1"},"annotations":{"line":{"color":"#888","opacity":0.5},"range":{"color":"#888","opacity":0.1}},"panels":{"title":{"fontSize":13}}},"d3-maps-core":{"places":{"capital":{"label":{"fontStyle":"normal","fontWeight":{"normal":700}}},"general":{"label":{"color":{"normal":"#ffffff","inverted":"#525252"},"buffer":{"color":{"normal":"#323232","inverted":"#ffffff"}},"fontStyle":"normal","fontWeight":{"normal":400}},"symbol":{"fill":{"normal":"#ffffff","inverted":"#525252"},"stroke":{"normal":"#323232","inverted":"#ffffff"}}}}},"d3-pies":{"labels":{"group":{"name":{"fontSize":14}},"center":{"fontSize":14}}},"multiple-lines":{},"d3-maps-symbols":{"regionFill":"#ededed"}},"colors":{"picker":{"controls":{"hue":true,"lightness":true,"saturation":true,"hexEditable":true},"rowCount":6,"showDuplicates":false},"neutral":"#CCCCCC","palette":["#18a1cd","#1d81a2","#15607a","#00dca6","#09bb9f","#009076","#c4c4c4","#c71e1d","#fa8c00","#ffca76","#ffe59c"],"negative":"#E31A1C","positive":"#85B4D4","gradients":[["#f0f9e8","#b6e3bb","#75c8c5","#4ba8c9","#2989bd","#0a6aad","#254b8c"],["#fcfcbe","#fdc78d","#fb8d67","#e45563","#ac337b","#6b1f7b","#2c1160"],["#f0f723","#fbbf2b","#f38a47","#d8586a","#ac2790","#6703a5","#0d0787"],["#fefaca","#008b15"],["#feebe2","#fcc5c0","#fa9fb5","#f768a1","#c51b8a","#7a0177"],["#ffffcc","#c7e9b4","#7fcdbb","#41b6c4","#2c7fb8","#253494"],["#8c510a","#d8b365","#f6e8c3","#f5f7ea","#c7eae5","#5ab4ac","#01665e"],["#c51b7d","#e9a3c9","#fde0ef","#faf6ea","#e6f5d0","#a1d76a","#4d9221"],["#b2182b","#ef8a62","#fddbc7","#f8f6e9","#d1e5f0","#67a9cf","#2166ac"]],"background":"#ffffff","categories":[["#F6D500","#0B91A7","#00CABD","#C2C100","#BA403E","#EF7F36","#2D4F84","#85BDF4","#9EF1BF","#D3F3FD"],["#7fc97f","#beaed4","#fdc086","#ffff99","#386cb0","#f0027f","#bf5b17","#666666"],["#fbb4ae","#b3cde3","#ccebc5","#decbe4","#fed9a6","#ffffcc","#e5d8bd","#fddaec","#f2f2f2"],["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a","#ffff99","#b15928"]],"bgBlendRatios":{"value":0},"chartContentBaseColor":"#181818"},"metadata":{"publish":{"blocks":{"logo":{"enabled":false},"embed":false,"download-pdf":false,"download-svg":false,"get-the-data":true,"download-image":false}}},"overrides":[{"type":"darkMode","settings":{"colors.gradients":[["#254b8c","#0a6aad","#2989bd","#4ba8c9","#75c8c5","#b6e3bb","#f0f9e8"],["#2c1160","#6b1f7b","#ac337b","#e45563","#fb8d67","#fcfcbe","#fdc78d"],["#0d0787","#6703a5","#ac2790","#d8586a","#f38a47","#fbbf2b","#f0f723"],["#007001","#f6f4a6"],["#42342d","#683c39","#8f3e55","#c73a78","#ff6bca","#ffcbff"],["#253494","#2c7fb8","#41b6c4","#7fcdbb","#c7e9b4","#ffffcc"]],"colors.background":"#252525","vis.d3-maps-core.places.general.label.color.normal":"#000000","vis.d3-maps-core.places.general.symbol.fill.normal":"#000000","vis.d3-maps-core.places.general.label.color.inverted":"#e5e5e5","vis.d3-maps-core.places.general.symbol.fill.inverted":"#e5e5e5","vis.d3-maps-core.places.general.symbol.stroke.normal":"#bfbfbf","vis.d3-maps-core.places.general.label.buffer.color.normal":"#bfbfbf"}},{"settings":{"vis.base.grid.vertical.tickLabels.hideZero":true},"condition":["in",["get","type"],["column-chart","grouped-column-chart","stacked-column-chart"]]},{"settings":{"vis.base.grid.horizontal.tickLabels.units":"last"},"condition":["==",["get","type"],"d3-scatter-plot"]},{"settings":{"vis.base.grid.horizontal.tickLabels.units":"all"},"condition":["in",["get","type"],["d3-bars","d3-arrow-plot","d3-bars-bullet","d3-bars-grouped","d3-bars-stacked","d3-dot-plot","d3-range-plot"]]},{"settings":{"vis.base.grid.horizontal.gridLines.aboveChart":true},"condition":["==",["get","type"],"d3-bars-stacked"]},{"settings":{"vis.base.grid.horizontal.baseLine.aboveChart":false,"vis.base.grid.horizontal.baseLine.blendBaseColorWithBg":0.6},"condition":["in",["get","type"],["d3-dot-plot","d3-range-plot","d3-arrow-plot"]]},{"type":"darkMode","settings":{"vis.base.grid.horizontal.baseLine.blendBaseColorWithBg":0.85},"condition":["in",["get","type"],["d3-dot-plot","d3-range-plot","d3-arrow-plot"]]},{"settings":{"vis.base.grid.vertical.gridLines.major.strokeDasharray":"dotted"},"condition":["in",["get","type"],["d3-range-plot","d3-arrow-plot"]]},{"type":"darkMode","settings":{"blocks.shareTools.styles.buttons.base.color":"rgba(255,255,255,0.4)","blocks.shareTools.styles.buttons.twitter.hover.color":"#ffffff","blocks.shareTools.styles.buttons.facebook.hover.color":"#ffffff","blocks.shareTools.styles.buttons.linkedin.hover.color":"#ffffff"}},{"type":"darkMode","settings":{"vis.d3-maps-core.places.general.label.fontWeight.normal":500,"vis.d3-maps-core.places.general.label.fontWeight.inverted":400}},{"settings":{"blocks.bodyCenter.styles.gap":20,"vis.base.annotations.text.size":12},"condition":["==",["get","type"],"multiple-lines"]}],"blocks":{"body":{"styles":{"gap":20,"links":{"typography":{"color":"#0088CC","underlined":false}},"typography":{"color":"#181818","fontSize":12,"typeface":"Roboto,sans-serif"}}},"header":{"styles":{"gap":10}},"bodyTop":{"styles":{"gap":10,"layout":"flex-row"}},"filterUI":{"styles":{"tabs":{"color":"#666","hover":{"color":"#222"},"active":{"color":"#000000","border":{"bottom":"2px solid #555555"}},"border":{"bottom":"1px solid #cccccc"}},"point":{"line":{"color":"#ccc"},"buttons":{"hover":{"background":"#ebebeb"},"active":{"border":"1px solid #888","background":"#ccc"},"border":"1px solid #ccc"}},"select":{"border":"1px solid #cccccc","textColor":"#000"}}},"bodyCenter":{"styles":{"gap":10,"flexGrow":1,"maxWidth":"100%","minWidth":"0px"}},"shareTools":{"styles":{"gap":8,"buttons":{"base":{"color":"#a7a7a7","padding":"0px"},"twitter":{"hover":{"color":"#000000"}},"facebook":{"hover":{"color":"#1877F2"}},"linkedin":{"hover":{"color":"#2867B2"}}}}},"footer":{"styles":{"gap":5}},"footerMain":{"styles":{"layout":"inline","separator":{"margin":"0.249em"},"typography":{"color":"#888","fontSize":11}}},"notes":{"styles":{"typography":{"cursive":true,"color":"#656565"}}},"headline":{"styles":{"typography":{"fontSize":22,"fontWeight":700,"color":"#000000"}}},"description":{"styles":{"typography":{"lineHeight":17,"fontSize":14}}}},"version":2,"regions":{"footer":{"type":"container","children":[{"type":"notes"},{"id":"footerMain","type":"container"}]}},"defaultFooterRegion":"footerMain","export":{"pdf":{"fonts":{"Roboto Bold":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Bold.ttf","Roboto Light":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Light.ttf","Roboto Medium":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Medium.ttf","Roboto Regular":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Regular.ttf","Roboto Bold Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-BoldItalic.ttf","Roboto Light Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-LightItalic.ttf","Roboto Medium Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-MediumItalic.ttf","Roboto Regular Italic":"https://static.dwcdn.net/css/fonts/roboto/ttf/Roboto-Italic.ttf"},"cmykColors":[],"defaultFont":"Roboto Regular"}},"fontFamilies":{"Roboto":[{"name":"Roboto Regular","style":"normal","weight":400},{"name":"Roboto Light","style":"normal","weight":300}]}},"textDirection":"ltr","published":true,"chartAutoDark":false}'
+        );
+      })();
+    </script>
+    <script src="../../lib/load-polyfills.3ef2fbcd.js"></script>
+    <script src="../../lib/vendor/dw-2.0.min.a4f95ddf.js"></script>
+    <script src="../../lib/vis/d3-maps-choropleth.1de60bee.js"></script>
+    <script>
+      window.parent.postMessage("datawrapper:vis:reload", "*");
+    </script>
+    <script src="../../lib/main.63a2ddad.js"></script>
+    <script>
+      if (!window.dw || !window.dw.scriptLoaded) {
+        const chart = document.querySelector("#chart");
+        chart.innerHTML =
+          "<img\
+                  style='max-width: 100%'\
+                  src='../plain.png'\
+                  aria-hidden='true'\
+                  alt='fallback image' />\
+                  <p style='opacity:0.6;padding:1ex; text-align:center'>\
+                      (Please use a modern browser to see the interactive version of this visualization)\
+                  </p>";
+      }
+    </script>
+    <script src="chrome-extension://gppongmhjkpfnbhagpmjfkannfbllamg/js/js.js"></script>
+  </body>
+</html>

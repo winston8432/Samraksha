@@ -93,7 +93,6 @@ function scrollToMore() {
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".animated-line").classList.add("active");
 });
-
 function scrollToMore() {
   const target = document.getElementById("moreSection");
   const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
@@ -116,6 +115,7 @@ function scrollToMore() {
     t--;
     return (-c / 2) * (t * (t - 2) - 1) + b;
   }
-
   requestAnimationFrame(animation);
 }
+
+

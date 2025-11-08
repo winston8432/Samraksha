@@ -1,0 +1,93 @@
+[{
+  "_id": {
+    "$oid": "690f24ce01d14f6a322e793e"
+  },
+  "city": "Haridwar",
+  "air_quality": {
+    "2023": null,
+    "2024": {
+      "average_AQI": "130-135",
+      "category": "Moderate"
+    },
+    "2025": {
+      "average_AQI": 136,
+      "category": "Moderate",
+      "health_implications": "Breathing discomfort to people with lung or heart disease, children, and older adults."
+    }
+  },
+  "water_quality": {
+    "2025": {
+      "class": "A",
+      "average_pH": 7.89,
+      "description": "Overall water quality class is A. The city generates about 260–300 metric tons of municipal solid waste daily under normal conditions. Authorities have improved sanitation by dividing the city into zones, installing makeshift toilets, and engaging more cleaning staff.",
+      "challenges": "City not among India's cleanest due to high pilgrim tourism. During the 12-day Kanwar Yatra, Haridwar generated over 30,000 metric tons of waste — equal to 4–5 months of normal output, with around 50% being plastic. About 10,000 tons of fecal waste entered the Ganga due to open defecation.",
+      "initiatives": {
+        "Namami_Gange": {
+          "sewage_treatment_plants": [
+            {
+              "location": "Jagjeetpur",
+              "capacity_MLD": 68,
+              "model": "Hybrid Annuity Model",
+              "features": [
+                "India’s first under Hybrid Annuity Model",
+                "50% women workforce (Pink STP)",
+                "Treated water reused for irrigation"
+              ]
+            },
+            {
+              "location": "Sarai",
+              "capacity_MLD": 14
+            }
+          ],
+          "total_capacity_MLD": 145,
+          "impact": "Reduced raw sewage discharge into Ganga and improved local ecology."
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "690f6be55f80094ea727a59e"
+  },
+  "city": "Dehradun",
+  "year": 2025,
+  "airQuality": {
+    "avgAQI": "≈140–150",
+    "category": "Moderate to Poor",
+    "pm10": "≈155 µg/m³",
+    "pm25": "≈88 µg/m³",
+    "remarks": "Winter smog and construction dust persist.",
+    "positiveActions": [
+      "Improved from rank 37 → 19 in Clean Air Survey 2025 (TOI)",
+      "Tree-planting drives",
+      "Adoption of e-vehicles",
+      "Use of mechanised sweeping"
+    ]
+  },
+  "waterQuality": {
+    "classRange": "Mostly Class A–B",
+    "problemAreas": [
+      "Rispana River",
+      "Bindal River"
+    ],
+    "remarks": "Sewage contamination persists; STP upgrades ongoing."
+  },
+  "cleanliness": {
+    "progress": "Moderate progress; door-to-door collection ≈80% via DMC Command & Control Centre.",
+    "initiatives": [
+      "Vacuum road sweepers introduced — first in Uttarakhand (TOI)",
+      "Plastic refund system launched to curb plastic waste (ET Govt)",
+      "Citizen clean-up and awareness drives growing"
+    ],
+    "issues": [
+      "Garbage hotspots reappearing in several wards (TOI Oct 2025)",
+      "Poor segregation and open dumping flagged by CAG (TOI Mar 2025)",
+      "‘Dustbin-free’ drive caused open littering (TOI Feb 2025)"
+    ]
+  },
+  "sources": [
+    "Times of India (TOI 2025)",
+    "Economic Times Govt (ET Govt 2025)"
+  ]
+}]
