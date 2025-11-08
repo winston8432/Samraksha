@@ -1,2 +1,4 @@
 # Samraksha
-asdfghjkl;qwertyuiop
+At Samrakhsha, we believe real change begins with small actions that protect and preserve our environment. Our Green Initiatives focus on promoting waste reduction, recycling, and plastic-free living while encouraging citizens to take part in cleanliness and tree plantation drives across Uttarakhand. We inspire communities, students, and local groups to adopt eco-friendly habits that contribute to a cleaner and healthier future.
+Alongside community participation, we support and highlight the efforts of the Government of India and the Uttarakhand State Government in building a sustainable future. Programs like Swachh Bharat Mission, Namami Gange, and Mission LiFE (Lifestyle for Environment) play a vital role in strengthening waste management systems, improving recycling, and protecting natural resources.
+Together, through collective action and awareness, Samrakhsha aims to make Uttarakhand a model of green growth — where people and the planet thrive in harmony.
