@@ -25,7 +25,6 @@ function showLogin() {
   loginForm.style.display = "block";
 }
 
-// LOGIN VALIDATION
 function login() {
   const email = document.getElementById("email").value.trim();
   const pass = document.getElementById("password").value.trim();
@@ -52,7 +51,6 @@ function login() {
   closeLogin();
 }
 
-// REGISTER VALIDATION
 function register() {
   const name = document.getElementById("regName").value.trim();
   const email = document.getElementById("regEmail").value.trim();
@@ -88,9 +86,36 @@ function register() {
   alert(`Account created successfully for ${name}!`);
   showLogin();
 }
+
 function scrollToMore() {
   document.getElementById("moreSection").scrollIntoView({ behavior: "smooth" });
 }
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelector('.animated-line').classList.add('active');
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector(".animated-line").classList.add("active");
 });
+
+function scrollToMore() {
+  const target = document.getElementById("moreSection");
+  const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+  const startPosition = window.pageYOffset;
+  const distance = targetPosition - startPosition;
+  const duration = 800; 
+  let start = null;
+
+  function animation(currentTime) {
+    if (start === null) start = currentTime;
+    const timeElapsed = currentTime - start;
+    const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+    window.scrollTo(0, run);
+    if (timeElapsed < duration) requestAnimationFrame(animation);
+  }
+
+  function easeInOutQuad(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return (c / 2) * t * t + b;
+    t--;
+    return (-c / 2) * (t * (t - 2) - 1) + b;
+  }
+
+  requestAnimationFrame(animation);
+}

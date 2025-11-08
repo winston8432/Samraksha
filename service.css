@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: poppins;
+}
+
+body {
+  overflow: auto;
+  height: auto;
+  min-height: 100vh;
+  /* background: url("samraksha.jpg") no-repeat center center/cover; */
+}
+
+.filter {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: url("samraksha.jpg") no-repeat center center/cover;
+}
+
+.filter::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(3, 2, 2, 0.3);
+  backdrop-filter: blur(3px);
+  z-index: 10;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-size: 20px;
+font-family: poppins;
+}
+
+nav a:hover {
+  color: limegreen;
+}
+.text {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 2;
+ font-family: poppins;
+}
+ul li{
+    list-style: none;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    padding: 30px;
+    font-family: poppins;
+}
+
+.animated-line {
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.animated-line::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 4px;
+  bottom: 0;
+  left: 50%;
+  background: linear-gradient(90deg, #4CAF50, #66BB6A);
+  transform: translateX(-50%);
+  transition: width 0.6s ease;
+  border-radius: 2px;
+}
+
+.animated-line:hover::after {
+  width: 100%;
+}
+
+.animated-line.active::after {
+  width: 100%;
+}
+ .animated-line{
+    color: linen;
+    transform: translate(-50%, -50% );
+    position: relative;
+    bottom: 130px;
+    left: -70%;
+ }
